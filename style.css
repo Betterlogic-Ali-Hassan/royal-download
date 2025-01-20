@@ -114,6 +114,7 @@ input:checked + .slider:before {
   transform: translateX(1.2em);
 }
 :root {
+  --disabled-color: #d3d3d3;
   --input-border: rgb(218 218 218);
   --background: #fff;
   --checkbox-bg: #f2f2f2;
@@ -136,6 +137,7 @@ input:checked + .slider:before {
   --warn-text-color: #a16207;
 }
 .dark {
+  --disabled-color: #5d5c5c;
   --input-border: rgb(74 74 74);
   --setting-box: #272727;
   --background: #0a0a0a;
@@ -832,6 +834,8 @@ nav .list li a .label {
 }
 button:disabled {
   pointer-events: none;
+  opacity: 50;
+  color: var(--disabled-color);
 }
 .loader-hide {
   display: none;
