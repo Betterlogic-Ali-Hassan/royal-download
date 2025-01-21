@@ -1,7 +1,12 @@
-const openBtn = document.querySelector(".open-modal-btn");
-const modal = document.querySelector(".modal-overlay");
-const closeBtn = document.querySelector(".close-modal-btn");
+// Variables
 const selectedAll = document.querySelectorAll(".wrapper-dropdown");
+const crossIcons = document.querySelectorAll(".cross-icon");
+const tagsContainer = document.getElementById("tags-container");
+const radioButtons = document.querySelectorAll('input[name="option"]');
+const inputWrapper = document.querySelector(".input-wrapper2");
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+// Theme Apply Settings
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
   const themeRadios = document.querySelectorAll('input[name="theme"]');
@@ -47,6 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (checkedRadio) applyTheme(checkedRadio.value);
   }
 });
+
+// Custom Select
 selectedAll.forEach((selected) => {
   const optionsContainer = selected.children[2];
   const optionsList = selected.querySelectorAll("div.wrapper-dropdown li");
@@ -106,9 +113,6 @@ function handleDropdown(dropdown, arrow, open) {
   }
 }
 
-// Reference to the tags container
-const tagsContainer = document.getElementById("tags-container");
-
 // Add the first tag by default
 function initializeDefaultTag(tagName) {
   // Create the default tag element
@@ -126,31 +130,6 @@ function initializeDefaultTag(tagName) {
     .querySelector(`button.tag-btn[onclick="addTag('${tagName}')"]`)
     .setAttribute("disabled", "true");
 }
-// Get all radio buttons
-const radioButtons = document.querySelectorAll('input[name="option"]');
-
-// Get the input-wrapper that needs to be shown/hidden
-const inputWrapper = document.querySelector(".input-wrapper2");
-
-radioButtons.forEach((button) => {
-  button.addEventListener("change", () => {
-    // Check if the selected option is "Custom"
-    if (button.value === "Custom" && button.checked) {
-      inputWrapper.style.opacity = 1;
-      inputWrapper.style.maxHeight = "100vh";
-      inputWrapper.style.height = "44px";
-      inputWrapper.style.padding = "1rem 0.5rem 1rem 0";
-      inputWrapper.style.marginTop = "0.8rem";
-    } else {
-      inputWrapper.style.opacity = 0;
-      inputWrapper.style.maxHeight = 0;
-      inputWrapper.style.padding = 0;
-      inputWrapper.style.marginTop = 0;
-      inputWrapper.style.height = 0;
-    }
-  });
-});
-
 // Function to add a tag
 function addTag(tagName) {
   // Check if the tag already exists in the container
@@ -177,7 +156,6 @@ function addTag(tagName) {
     .setAttribute("disabled", "true");
   showToast("Setting Saved Successfully");
 }
-
 // Function to remove a tag
 function removeTag(button, tagName) {
   // Remove the tag from the tags container
@@ -189,6 +167,34 @@ function removeTag(button, tagName) {
     .removeAttribute("disabled");
   showToast("Setting Saved Successfully");
 }
+
+crossIcons.forEach((icon) => {
+  icon.addEventListener("click", () => {
+    const alert = icon.closest(".alert");
+    if (alert) {
+      alert.style.display = "none";
+    }
+  });
+});
+
+radioButtons.forEach((button) => {
+  button.addEventListener("change", () => {
+    // Check if the selected option is "Custom"
+    if (button.value === "Custom" && button.checked) {
+      inputWrapper.style.opacity = 1;
+      inputWrapper.style.maxHeight = "100vh";
+      inputWrapper.style.height = "44px";
+      inputWrapper.style.padding = "1rem 0.5rem 1rem 0";
+      inputWrapper.style.marginTop = "0.8rem";
+    } else {
+      inputWrapper.style.opacity = 0;
+      inputWrapper.style.maxHeight = 0;
+      inputWrapper.style.padding = 0;
+      inputWrapper.style.marginTop = 0;
+      inputWrapper.style.height = 0;
+    }
+  });
+});
 
 function toggleInput(checkbox) {
   // Get the target input box ID from the data attribute
@@ -208,39 +214,6 @@ function toggleInput(checkbox) {
     targetInput.style.maxHeight = 0;
     targetInput.style.marginTop = 0;
   }
-}
-
-function showLoader(button) {
-  const loaderIcon = button.querySelector("svg");
-
-  if (loaderIcon) {
-    loaderIcon.classList.remove("loader-hide");
-    button.disabled = true;
-
-    setTimeout(() => {
-      loaderIcon.classList.add("loader-hide");
-      button.disabled = false;
-    }, 2000);
-  }
-}
-
-const crossIcons = document.querySelectorAll(".cross-icon");
-
-crossIcons.forEach((icon) => {
-  icon.addEventListener("click", () => {
-    const alert = icon.closest(".alert");
-    if (alert) {
-      alert.style.display = "none";
-    }
-  });
-});
-
-function openModal() {
-  modal.classList.remove("hide");
-}
-
-function closeModal() {
-  modal.classList.add("hide");
 }
 
 function showToast(message) {
@@ -321,8 +294,6 @@ document.addEventListener("change", (event) => {
     showToast("Setting Saved Successfully");
   }
 });
-// Select all checkboxes
-const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
 checkboxes.forEach((checkbox) => {
   checkbox.addEventListener("change", (event) => {
@@ -338,9 +309,5 @@ checkboxes.forEach((checkbox) => {
   });
 });
 
-openBtn.addEventListener("click", openModal);
-modal.addEventListener("click", (e) => closeModal());
-closeBtn.addEventListener("click", closeModal);
-
-initializeDefaultTag();
+initializeDefaultTag("Filename");
 switchBoxToggle();
