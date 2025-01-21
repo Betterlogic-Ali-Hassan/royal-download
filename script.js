@@ -130,15 +130,23 @@ function initializeDefaultTag(tagName) {
 const radioButtons = document.querySelectorAll('input[name="option"]');
 
 // Get the input-wrapper that needs to be shown/hidden
-const inputWrapper = document.querySelector(".input-wrapper");
+const inputWrapper = document.querySelector(".input-wrapper2");
 
 radioButtons.forEach((button) => {
   button.addEventListener("change", () => {
     // Check if the selected option is "Custom"
     if (button.value === "Custom" && button.checked) {
-      inputWrapper.style.display = "flex"; // Show the input field
+      inputWrapper.style.opacity = 1;
+      inputWrapper.style.maxHeight = "100vh";
+      inputWrapper.style.height = "44px";
+      inputWrapper.style.padding = "1rem 0.5rem 1rem 0";
+      inputWrapper.style.marginTop = "0.8rem";
     } else {
-      inputWrapper.style.display = "none"; // Hide the input field
+      inputWrapper.style.opacity = 0;
+      inputWrapper.style.maxHeight = 0;
+      inputWrapper.style.padding = 0;
+      inputWrapper.style.marginTop = 0;
+      inputWrapper.style.height = 0;
     }
   });
 });
@@ -189,11 +197,19 @@ function toggleInput(checkbox) {
 
   // Show or hide the input box based on the checkbox state
   if (checkbox.checked) {
-    targetInput.style.display = "block";
+    targetInput.style.opacity = 1;
+    targetInput.style.maxHeight = "100vh";
+    // Check if targetId is "3" and skip marginTop
+    if (targetId !== "input3") {
+      targetInput.style.marginTop = "0.8rem";
+    }
   } else {
-    targetInput.style.display = "none";
+    targetInput.style.opacity = 0;
+    targetInput.style.maxHeight = 0;
+    targetInput.style.marginTop = 0;
   }
 }
+
 function showLoader(button) {
   const loaderIcon = button.querySelector("svg");
 
@@ -226,11 +242,15 @@ function openModal() {
 function closeModal() {
   modal.classList.add("hide");
 }
+
 function showToast(message) {
   const toastContainer = document.getElementById("toast-container");
+  let foldDirection = "top"; // 'top' or 'bottom'
 
   // Create a new toast div
+  const toastId = `toast-${Date.now()}`;
   const toast = document.createElement("div");
+  toast.id = toastId;
   toast.classList.add("toast");
   toast.innerHTML = `
     <div style="display: flex; align-items: center; gap: 12px">
@@ -251,28 +271,48 @@ function showToast(message) {
 
   // Append the toast to the container
   toastContainer.appendChild(toast);
+  pillToasts();
 
-  // Show the toast
   setTimeout(() => {
-    toast.classList.add("show");
-  }, 10);
-
+    toast.remove();
+    pillToasts();
+  }, 5000);
+  toastContainer.addEventListener("mouseover", () => {
+    updateTransforms();
+  });
+  toastContainer.addEventListener("mouseout", () => {
+    pillToasts();
+  });
   // Close the toast when cross icon is clicked
   const closeButton = toast.querySelector("#cross");
   closeButton.addEventListener("click", () => {
-    toast.classList.remove("show");
-    setTimeout(() => {
-      toastContainer.removeChild(toast);
-    }, 500);
+    toast.remove();
+    pillToasts();
   });
 
-  // Auto-hide the toast after 4 seconds
-  setTimeout(() => {
-    toast.classList.remove("show");
-    setTimeout(() => {
-      toastContainer.removeChild(toast);
-    }, 500);
-  }, 2000);
+  function pillToasts() {
+    const children = Array.from(toastContainer.children);
+    let i = children.length - 1;
+
+    children.forEach((child) => {
+      child.style.transform = `translateY(${
+        foldDirection === "top" ? 1 - i * 20 : i * 20
+      }%) scale(${(100 - 5 * i) / 100})`;
+      i--;
+    });
+  }
+
+  function updateTransforms() {
+    const children = Array.from(toastContainer.children);
+    let i = children.length - 1;
+
+    children.forEach((child) => {
+      child.style.transform = `translateY(${
+        foldDirection === "top" ? "-" : ""
+      }${i * 110}%) scale(1)`;
+      i--;
+    });
+  }
 }
 
 document.addEventListener("change", (event) => {

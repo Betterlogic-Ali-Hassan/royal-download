@@ -265,7 +265,7 @@
                   </label>
                 </div>
               </div>
-              <div class="box-input" id="input1" style="display: none">
+              <div class="box-input" id="input1">
                 <input type="text" placeholder="Replace with (e.g., '-')" />
               </div>
             </div>
@@ -290,15 +290,12 @@
                   </label>
                 </div>
               </div>
-              <div class="box-input" id="input2" style="display: none">
+              <div class="box-input" id="input2">
                 <input type="text" placeholder="Set Character Limit" />
               </div>
             </div>
             <div class="setting-box mt-8">
-              <div
-                class="setting-box-item"
-                style="flex-direction: column; align-items: start"
-              >
+              <div class="setting-box-item">
                 <div class="setting-box-item-text">
                   <h4>File Name Case Management</h4>
                   <p class="desc">
@@ -307,6 +304,18 @@
                     during saving or downloading.
                   </p>
                 </div>
+                <div class="btn">
+                  <label class="switch">
+                    <input
+                      type="checkbox"
+                      data-target="input3"
+                      onchange="toggleInput(this)"
+                    />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="box-input" id="input3">
                 <div class="radio-btn">
                   <div class="radio-wrapper">
                     <div class="radio-group radio-gap-xl">
@@ -350,7 +359,9 @@
         </section>
       </main>
     </div>
-    <div id="toast-container"></div>
+    <div class="toasts-wrapper">
+      <div class="toast-container" id="toast-container"></div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

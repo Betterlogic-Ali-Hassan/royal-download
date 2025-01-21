@@ -228,7 +228,12 @@
                   <div class="radio-wrapper">
                     <div class="radio-group radio-gap-xl">
                       <label class="radio-button checkbox checkbox-label">
-                        <input type="radio" name="option" value="100 KB" />
+                        <input
+                          type="radio"
+                          name="option"
+                          value="100 KB"
+                          checked
+                        />
                         <div class="radio-circle"></div>
                         <span class="radio-label label">100 KB</span>
                       </label>
@@ -248,7 +253,7 @@
                         <span class="radio-label label">Custom</span>
                       </label>
                     </div>
-                    <div class="input-wrapper" style="display: none">
+                    <div class="input-wrapper2">
                       <input
                         type="text"
                         name="size"
@@ -271,7 +276,9 @@
         </section>
       </main>
     </div>
-    <div id="toast-container"></div>
+    <div class="toasts-wrapper">
+      <div class="toast-container" id="toast-container"></div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
