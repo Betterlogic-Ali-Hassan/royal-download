@@ -1,0 +1,46 @@
+:root {
+  --disabled-color: #d3d3d3;
+  --input-border: rgb(218 218 218);
+  --background: #fff;
+  --checkbox-bg: #f2f2f2;
+  --secondary-color: #e5e5e5;
+  --card-bg: #fff;
+  --text-color: rgb(154, 154, 154);
+  --dark: black;
+  --hover-color: rgb(242 242 242);
+  --card-color: #f4f4f5;
+  --border-color: hsl(240 5.9% 90%);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --setting-box: #fff;
+  --success-color: #f0fdf4;
+  --error-color: #fef2f2;
+  --info-color: #f0f6ff;
+  --warn-color: #fefce8;
+  --success-text-color: #15803d;
+  --error-text-color: #b91c1c;
+  --info-text-color: #1d4ed8;
+  --warn-text-color: #a16207;
+}
+.dark {
+  --disabled-color: #5d5c5c;
+  --input-border: rgb(74 74 74);
+  --setting-box: #272727;
+  --background: #0a0a0a;
+  --checkbox-bg: #535353;
+  --card-bg: #0a0a0a;
+  --secondary-color: #535353;
+  --text-color: rgb(154, 154, 154);
+  --dark: white;
+  --hover-color: rgb(69 69 69);
+  --card-color: #27272a;
+  --border-color: hsl(240 3.7% 15.9%);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --success-color: rgb(20 83 45);
+  --error-color: rgb(127 29 29);
+  --info-color: rgb(30 58 138);
+  --warn-color: rgb(113 63 18);
+  --success-text-color: #bbf7d0;
+  --error-text-color: #fecaca;
+  --info-text-color: #bfd8fe;
+  --warn-text-color: #fef08a;
+}

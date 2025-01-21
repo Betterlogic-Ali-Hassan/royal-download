@@ -1,0 +1,74 @@
+/* alerts  */
+.alert {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.alert-text {
+  display: flex;
+  align-items: start;
+  gap: 12px;
+  h5 {
+    font-weight: 500;
+    line-height: 20px;
+    font-size: 14px;
+  }
+  p {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  button {
+    background-color: white;
+    height: 2rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    gap: 0.5rem;
+    color: black;
+    border: 1px solid #dadada;
+    &:hover {
+      background-color: #f2f2f2;
+    }
+  }
+}
+.cross-icon {
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.cross-icon:hover {
+  background-color: #dadada;
+}
+.success-alert {
+  color: var(--success-text-color);
+  background-color: var(--success-color);
+  p {
+    color: var(--success-text-color);
+  }
+}
+.error-alert {
+  color: var(--error-text-color);
+  background-color: var(--error-color);
+  p {
+    color: var(--error-text-color);
+  }
+}
+.info-alert {
+  color: var(--info-text-color);
+  background-color: var(--info-color);
+  p {
+    color: var(--info-text-color);
+  }
+}
+.warn-alert {
+  color: var(--warn-text-color);
+  background-color: var(--warn-color);
+  p {
+    color: var(--warn-text-color);
+  }
+}
