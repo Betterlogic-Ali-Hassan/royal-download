@@ -50,7 +50,7 @@ const sidebar = `
                   >
                 </li>
                 <li>
-                  <a href="./audioDownload.html" class="nav-link"
+                  <a href="./audiodownload.html" class="nav-link"
                     ><span
                       ><svg
                         xmlns="http://www.w3.org/2000/svg"
