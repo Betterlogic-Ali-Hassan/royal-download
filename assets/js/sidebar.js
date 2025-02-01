@@ -85,6 +85,42 @@ const sidebar = `
                     ><span class="label">File Naming Settings</span></a
                   >
                 </li>
+                 <li>
+                  <a
+                    class="nav-link"
+                    href="./customcode.html"
+                    ><span
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                        viewBox="0 -960 960 960"
+                      >
+                        <path
+                          d="M452.12-108.08v-214.04h55.96v78.89h304.65v55.96H508.08v79.19zm-304.85-79.19v-55.96h221.19v55.96zm135.46-205.04h58.89l42.37-119.92h192.33l42.06 119.92h59.08L507.58-851.92h-54.96zm119.12-170.23L478-777.77h4l76.15 215.23z"
+                        ></path></svg></span
+                    ><span class="label">Custom Code</span></a
+                  >
+                </li>
+                 <li>
+                  <a
+                    class="nav-link"
+                    href="./customapi.html"
+                    ><span
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                        viewBox="0 -960 960 960"
+                      >
+                        <path
+                          d="M452.12-108.08v-214.04h55.96v78.89h304.65v55.96H508.08v79.19zm-304.85-79.19v-55.96h221.19v55.96zm135.46-205.04h58.89l42.37-119.92h192.33l42.06 119.92h59.08L507.58-851.92h-54.96zm119.12-170.23L478-777.77h4l76.15 215.23z"
+                        ></path></svg></span
+                    ><span class="label">Custom API</span></a
+                  >
+                </li>
               </ul>
             </nav>
           </div>

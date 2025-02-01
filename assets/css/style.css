@@ -440,7 +440,7 @@
 .tag-input-wrapper {
   margin-top: 0.8rem;
 }
-.tag-input-wrapper .tag-input {
+.tag-input {
   font-size: 14px;
   padding: 1rem 12px;
   border: 1px solid var(--input-border);
