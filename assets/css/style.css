@@ -544,3 +544,23 @@ button:disabled {
     margin-left: 0 !important;
   }
 }
+.select-wrapper {
+  margin-top: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.select-dropdown {
+  min-width: 112px !important;
+  min-width: 115px !important;
+  height: 52px;
+}
+.editor {
+  min-height: 210px;
+}
+.error-message {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: 10px;
+  display: none;
+}

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/variables.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
@@ -25,12 +26,51 @@
                   <h4>Custom Content Script</h4>
                   <input
                     type="text"
-                    name="Content Script"
-                    id="Content Script"
+                    value="New script 1"
                     class="tag-input"
-                    placeholder="Custom Content Script"
                     style="margin-top: 0.8rem"
                   />
+                  <div class="select-wrapper">
+                    <input
+                      type="text"
+                      name="url"
+                      id="url"
+                      class="tag-input"
+                      placeholder="https://example.com"
+                    />
+                    <div class="wrapper-dropdown select-dropdown" id="dropdown">
+                      <span class="selected-display" id="destination"
+                        >Whitelist</span
+                      >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        class="arrow"
+                        id="drp-arrow"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-chevron-down h-4 w-4"
+                      >
+                        <path d="m6 9 6 6 6-6"></path>
+                      </svg>
+
+                      <ul class="dropdown">
+                        <li class="item">Blacklist</li>
+                        <li class="item">Whitelist</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <textarea
+                    id="code-editor"
+                    class="tag-input editor"
+                    placeholder="Custom Content Script"
+                    style="margin-top: 0.8rem"
+                  ></textarea>
                 </div>
               </div>
             </div>
@@ -38,6 +78,7 @@
               <div class="setting-box-item">
                 <div style="padding: 8px 0; width: 100%">
                   <h4>Background Script</h4>
+
                   <input
                     type="text"
                     name="Background Script"

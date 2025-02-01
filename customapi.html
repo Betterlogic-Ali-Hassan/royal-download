@@ -26,11 +26,14 @@
                   <input
                     type="text"
                     name="API URL"
-                    id="API URL"
+                    id="url-input"
                     class="tag-input"
                     placeholder="API URL"
                     style="margin-top: 0.8rem"
                   />
+                  <div class="error-message" id="error-message">
+                    Please enter a valid URL.
+                  </div>
                 </div>
               </div>
             </div>
@@ -56,6 +59,7 @@
     <div class="toasts-wrapper">
       <div class="toast-container" id="toast-container"></div>
     </div>
+    <script src="./assets/js/urlValidate.js"></script>
     <script src="./assets/js/sidebar.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
