@@ -65,12 +65,12 @@
                       </ul>
                     </div>
                   </div>
-                  <textarea
-                    id="code-editor"
-                    class="tag-input editor"
-                    placeholder="Custom Content Script"
-                    style="margin-top: 0.8rem"
-                  ></textarea>
+                  <div class="code-editor">
+                    <div class="line-numbers" id="line-numbers">
+                      <span>1</span><br />
+                    </div>
+                    <textarea id="code-input" spellcheck="false"></textarea>
+                  </div>
                 </div>
               </div>
             </div>
@@ -97,6 +97,7 @@
     <div class="toasts-wrapper">
       <div class="toast-container" id="toast-container"></div>
     </div>
+    <script src="./assets/js/editor.js"></script>
     <script src="./assets/js/sidebar.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
