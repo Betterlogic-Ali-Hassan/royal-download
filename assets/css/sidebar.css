@@ -46,17 +46,18 @@ nav .list {
 nav .list li {
   margin-top: 2px;
   margin-bottom: 2px;
+  cursor: pointer;
 }
-nav .list li a {
+nav .list li .nav-link {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0.75rem 1.5rem;
   align-items: center;
   display: flex;
 }
-nav .list li a:hover {
+nav .list li .nav-link:hover {
   background-color: var(--hover-color);
 }
-nav .list li a .label {
+nav .list li .nav-link .label {
   padding-left: 1rem;
   line-height: 24px;
 }
@@ -69,7 +70,7 @@ nav .list li a .label {
   .sidebar {
     width: 80px;
   }
-  nav .list li a .label {
+  nav .list li .nav-link .label {
     display: none;
   }
   .logo-wrapper h3 {

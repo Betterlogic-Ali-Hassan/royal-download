@@ -5,7 +5,26 @@ const tagsContainer = document.getElementById("tags-container");
 const radioButtons = document.querySelectorAll('input[name="option"]');
 const inputWrapper = document.querySelector(".input-wrapper2");
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+const items = document.querySelectorAll(".sidebar .nav-link");
+const contents = document.querySelectorAll(".main .setting-section");
+// Conditional Rendering
 
+items.forEach((item) => {
+  item.addEventListener("click", function () {
+    // Remove active class from all items
+    items.forEach((i) => i.classList.remove("active"));
+    // Add active class to the clicked item
+    this.classList.add("active");
+    // Show the corresponding content
+    contents.forEach((content) => content.classList.remove("show-content"));
+    contents.forEach((content) => content.classList.add("hide-content"));
+
+    document.getElementById(this.dataset.target).classList.add("show-content");
+    document
+      .getElementById(this.dataset.target)
+      .classList.remove("hide-content");
+  });
+});
 // Theme Apply Settings
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
@@ -218,7 +237,7 @@ function toggleInput(checkbox) {
 
 function showToast(message) {
   const toastContainer = document.getElementById("toast-container");
-  let foldDirection = "top"; // 'top' or 'bottom'
+  let foldDirection = "top";
 
   // Create a new toast div
   const toastId = `toast-${Date.now()}`;
@@ -290,7 +309,13 @@ function showToast(message) {
 
 document.addEventListener("change", (event) => {
   const target = event.target;
-  if (target.type === "checkbox" || target.type === "radio") {
+  if (
+    target.type === "checkbox" ||
+    target.type === "radio" ||
+    target.type === "number" ||
+    target.type === "text" ||
+    target.tagName === "SELECT"
+  ) {
     showToast("Setting Saved Successfully");
   }
 });

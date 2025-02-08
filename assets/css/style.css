@@ -4,6 +4,12 @@
   padding-right: 6rem;
 }
 
+.show-content {
+  display: block;
+}
+.hide-content {
+  display: none;
+}
 .setting-section {
   max-width: 672px;
   margin-bottom: 1.5rem;
