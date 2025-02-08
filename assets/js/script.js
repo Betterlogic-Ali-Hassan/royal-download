@@ -336,3 +336,76 @@ checkboxes.forEach((checkbox) => {
 
 initializeDefaultTag("Filename");
 switchBoxToggle();
+//Script Add Functions
+const addNewBtn = document.querySelector(".new");
+addNewBtn.addEventListener("click", addScript);
+let count = 1;
+
+function addScript() {
+  console.log("hello");
+  const scriptsContainer = document.getElementById("scripts");
+  const scriptDiv = document.createElement("div");
+  scriptDiv.innerHTML = `
+              <div class="script-edit-bar">
+                <h3>New Script ${count}</h3>
+                <div class="script-bar-actions">
+                  <label class="switch">
+                    <input type="checkbox" />
+                    <span class="slider"></span>
+                  </label>
+                  <button class="btn btn-primary">Edit</button>
+                  <button class="btn btn-danger">Delete</button>
+                </div>
+              </div>
+              <input
+                type="text"
+                value="New script ${count}"
+                class="tag-input"
+                style="margin-top: 0.8rem"
+              />
+              <div class="select-wrapper">
+                <input
+                  type="text"
+                  name="url"
+                  id="url"
+                  class="tag-input"
+                  placeholder="https://example.com"
+                />
+                <div class="wrapper-dropdown select-dropdown" id="dropdown">
+                  <span class="selected-display" id="destination"
+                    >Whitelist</span
+                  >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    class="arrow"
+                    id="drp-arrow"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-chevron-down h-4 w-4"
+                  >
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+  
+                  <ul class="dropdown">
+                    <li class="item">Blacklist</li>
+                    <li class="item">Whitelist</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="code-editor">
+                <div class="line-numbers" id="line-numbers">
+                  <span>1</span><br />
+                </div>
+                <textarea id="code-input" spellcheck="false"></textarea>
+              </div>
+     
+    `;
+  scriptsContainer.appendChild(scriptDiv);
+  count++;
+}

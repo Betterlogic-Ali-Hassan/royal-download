@@ -1164,55 +1164,14 @@
       <h1>Custom Code</h1>
       <div class="setting-box mt-8">
         <div class="setting-box-item">
+     
           <div style="padding: 8px 0; width: 100%">
-            <h4>Custom Content Script</h4>
-            <input
-              type="text"
-              value="New script 1"
-              class="tag-input"
-              style="margin-top: 0.8rem"
-            />
-            <div class="select-wrapper">
-              <input
-                type="text"
-                name="url"
-                id="url"
-                class="tag-input"
-                placeholder="https://example.com"
-              />
-              <div class="wrapper-dropdown select-dropdown" id="dropdown">
-                <span class="selected-display" id="destination"
-                  >Whitelist</span
-                >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  class="arrow"
-                  id="drp-arrow"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="lucide lucide-chevron-down h-4 w-4"
-                >
-                  <path d="m6 9 6 6 6-6"></path>
-                </svg>
-
-                <ul class="dropdown">
-                  <li class="item">Blacklist</li>
-                  <li class="item">Whitelist</li>
-                </ul>
-              </div>
+            <div>
+              <h4>Custom Content Script</h4>
+              <button class="new">Add New</button>
             </div>
-            <div class="code-editor">
-              <div class="line-numbers" id="line-numbers">
-                <span>1</span><br />
-              </div>
-              <textarea id="code-input" spellcheck="false"></textarea>
-            </div>
+            <div id="scripts"></div>
+          
           </div>
         </div>
       </div>
@@ -1279,10 +1238,10 @@
     <div class="toasts-wrapper">
       <div class="toast-container" id="toast-container"></div>
     </div>
+    <script src="./assets/js/script.js"></script>
     <script src="./assets/js/editor.js"></script>
     <script src="./assets/js/urlValidate.js"></script>
     <script src="./assets/js/modal.js"></script>
     <script src="./assets/js/btnLoading.js"></script>
-    <script src="./assets/js/script.js"></script>
   </body>
 </html>
