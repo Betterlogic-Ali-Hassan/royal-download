@@ -613,3 +613,101 @@ textarea::selection {
   margin-top: 10px;
   display: none;
 }
+.add-new{
+  background-color: black;
+  min-width: 80px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  min-height:42px;
+  padding: 0 24px;
+  border-radius: 24px;
+  border: 2px solid transparent;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease-in-out;
+  margin-top: 16px;
+}
+.add-new:hover{
+  background-color: rgba(0, 0, 0, 0.863);
+}
+.script-edit-bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  margin-top: 16px;
+}
+.script-edit-bar.active-script {
+  background-color: black;
+  h3{
+    color: white;
+  }
+  .action-btn {
+    svg{
+      fill: white;
+    }
+    &:hover {
+      background-color: #fff;
+  svg{
+    fill: black;
+  }
+    }
+  }
+}
+.script-edit-bar h3{
+  color: black;
+  margin: 0;
+  font-size: 14px;
+}
+.script-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.script-bar-actions .slider{
+  background-color: transparent;
+  height: 25px;
+  width: 47px;
+  border: 1px solid red;
+  &::before{
+    background-color: red;
+  }
+  
+}
+.script-bar-actions input:checked + .slider {
+  background-color: transparent;
+  border: 1px solid #05C896;
+  &::before{
+    background-color: #ccc;
+  }
+}
+.action-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s ease-in-out;
+  height: 32px;
+  width: 32px;
+  border-radius: 99999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3 ease-in-out;
+  svg{
+    fill: black;
+  }
+}
+.action-btn:hover{
+  background-color: #000;
+  svg{
+    fill: white;
+  }
+
+}

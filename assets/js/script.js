@@ -7,6 +7,108 @@ const inputWrapper = document.querySelector(".input-wrapper2");
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 const items = document.querySelectorAll(".sidebar .nav-link");
 const contents = document.querySelectorAll(".main .setting-section");
+const addNewBtn = document.querySelector("#add-new");
+
+//Script Add Functions
+
+addNewBtn.addEventListener("click", addScript);
+let count = 1;
+
+function addScript() {
+  const scriptsContainer = document.getElementById("scripts");
+
+  // Sab scripts ko close kar do
+  document.querySelectorAll(".script-container").forEach(script => {
+    script.querySelector(".script-body").style.display = "none";
+    script.querySelector(".script-edit-bar").classList.remove("active-script");
+  });
+
+  const scriptDiv = document.createElement("div");
+  scriptDiv.classList.add("script-container");
+
+  scriptDiv.innerHTML = `
+    <div class="script-edit-bar active-script">
+      <h3>New Script ${count}</h3>
+      <div class="script-bar-actions">
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider"></span>
+        </label>
+        <button class="action-btn edit-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+            <path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/>
+          </svg>
+        </button>
+        <button class="action-btn delete-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+            <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="script-body" style="display: block;">
+      <input type="text" value="New script ${count}" class="tag-input" style="margin-top: 0.8rem" />
+      <div class="select-wrapper">
+        <input type="text" name="url" id="url" class="tag-input" placeholder="https://example.com" />
+        <div class="wrapper-dropdown select-dropdown" id="dropdown">
+          <span class="selected-display" id="destination">Whitelist</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="arrow" id="drp-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"></path>
+          </svg>
+          <ul class="dropdown">
+            <li class="item">Blacklist</li>
+            <li class="item">Whitelist</li>
+          </ul>
+        </div>
+      </div>
+      <div class="code-editor">
+        <div class="line-numbers" id="line-numbers">
+          <span>1</span><br />
+        </div>
+        <textarea id="code-input" spellcheck="false"></textarea>
+      </div>
+    </div>
+  `;
+  
+  scriptsContainer.appendChild(scriptDiv);
+  count++;
+
+  const editBtn = scriptDiv.querySelector(".edit-btn");
+  const scriptBody = scriptDiv.querySelector(".script-body");
+  const editBar = scriptDiv.querySelector(".script-edit-bar");
+
+  // Edit button functionality
+  editBtn.addEventListener("click", () => {
+    const isOpen = scriptBody.style.display === "block";
+
+    // Sabhi scripts close kar do
+    document.querySelectorAll(".script-container").forEach(script => {
+      script.querySelector(".script-body").style.display = "none";
+      script.querySelector(".script-edit-bar").classList.remove("active-script");
+    });
+
+    scriptBody.style.display = isOpen ? "none" : "block";
+    if (!isOpen) {
+      editBar.classList.add("active-script");
+    }
+    showToast("Setting Saved Successfully");
+  });
+
+  // Delete button functionality
+  scriptDiv.querySelector(".delete-btn").addEventListener("click", () => {
+    const confirmDelete = confirm("Are you sure you want to delete this Script?");
+    if (confirmDelete) {
+      scriptDiv.remove();
+      showToast("Setting Saved Successfully");
+    }
+    if (scriptsContainer.childElementCount === 0) {
+      count = 1;
+    }
+  });
+  showToast("Setting Saved Successfully");
+}
+
+
 // Conditional Rendering
 
 items.forEach((item) => {
@@ -73,55 +175,50 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Custom Select
-selectedAll.forEach((selected) => {
-  const optionsContainer = selected.children[2];
-  const optionsList = selected.querySelectorAll("div.wrapper-dropdown li");
+// **Dropdown Toggle Handler**
+document.addEventListener("click", function (event) {
+  let selected = event.target.closest(".wrapper-dropdown");
 
-  selected.addEventListener("click", () => {
-    let arrow = selected.children[1];
+  if (selected) {
+    let arrow = selected.querySelector(".arrow");
 
     if (selected.classList.contains("active")) {
       handleDropdown(selected, arrow, false);
     } else {
-      let currentActive = document.querySelector(".wrapper-dropdown.active");
-
-      if (currentActive) {
-        let anotherArrow = currentActive.children[1];
-        handleDropdown(currentActive, anotherArrow, false);
-      }
-
+      closeAllDropdowns(); // Close any other open dropdown
       handleDropdown(selected, arrow, true);
     }
-  });
-
-  // update the display of the dropdown
-  for (let o of optionsList) {
-    o.addEventListener("click", () => {
-      selected.querySelector(".selected-display").innerHTML = o.innerHTML;
-      showToast("Setting Saved Successfully");
-    });
   }
 });
 
-// check if anything else ofther than the dropdown is clicked
-window.addEventListener("click", function (e) {
-  if (e.target.closest(".wrapper-dropdown") === null) {
+// **Dropdown Item Selection**
+document.addEventListener("click", function (event) {
+  if (event.target.matches(".wrapper-dropdown .dropdown .item")) {
+    let selected = event.target.closest(".wrapper-dropdown");
+    let display = selected.querySelector(".selected-display");
+
+    display.innerHTML = event.target.innerHTML;
+    showToast("Setting Saved Successfully");
+
+    handleDropdown(selected, selected.querySelector(".arrow"), false);
+  }
+});
+
+// **Close dropdown when clicking outside**
+window.addEventListener("click", function (event) {
+  if (!event.target.closest(".wrapper-dropdown")) {
     closeAllDropdowns();
   }
 });
 
-// close all the dropdowns
+// **Close All Dropdowns**
 function closeAllDropdowns() {
-  const selectedAll = document.querySelectorAll(".wrapper-dropdown");
-  selectedAll.forEach((selected) => {
-    const optionsContainer = selected.children[2];
-    let arrow = selected.children[1];
-
-    handleDropdown(selected, arrow, false);
+  document.querySelectorAll(".wrapper-dropdown.active").forEach((dropdown) => {
+    handleDropdown(dropdown, dropdown.querySelector(".arrow"), false);
   });
 }
 
-// open all the dropdowns
+// **Handle Dropdown Open/Close**
 function handleDropdown(dropdown, arrow, open) {
   if (open) {
     arrow.classList.add("rotated");
@@ -131,6 +228,7 @@ function handleDropdown(dropdown, arrow, open) {
     dropdown.classList.remove("active");
   }
 }
+
 
 // Add the first tag by default
 function initializeDefaultTag(tagName) {
@@ -314,6 +412,7 @@ document.addEventListener("change", (event) => {
     target.type === "radio" ||
     target.type === "number" ||
     target.type === "text" ||
+    target.tagName === "TEXTAREA" ||
     target.tagName === "SELECT"
   ) {
     showToast("Setting Saved Successfully");
@@ -336,76 +435,4 @@ checkboxes.forEach((checkbox) => {
 
 initializeDefaultTag("Filename");
 switchBoxToggle();
-//Script Add Functions
-const addNewBtn = document.querySelector(".new");
-addNewBtn.addEventListener("click", addScript);
-let count = 1;
 
-function addScript() {
-  console.log("hello");
-  const scriptsContainer = document.getElementById("scripts");
-  const scriptDiv = document.createElement("div");
-  scriptDiv.innerHTML = `
-              <div class="script-edit-bar">
-                <h3>New Script ${count}</h3>
-                <div class="script-bar-actions">
-                  <label class="switch">
-                    <input type="checkbox" />
-                    <span class="slider"></span>
-                  </label>
-                  <button class="btn btn-primary">Edit</button>
-                  <button class="btn btn-danger">Delete</button>
-                </div>
-              </div>
-              <input
-                type="text"
-                value="New script ${count}"
-                class="tag-input"
-                style="margin-top: 0.8rem"
-              />
-              <div class="select-wrapper">
-                <input
-                  type="text"
-                  name="url"
-                  id="url"
-                  class="tag-input"
-                  placeholder="https://example.com"
-                />
-                <div class="wrapper-dropdown select-dropdown" id="dropdown">
-                  <span class="selected-display" id="destination"
-                    >Whitelist</span
-                  >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    class="arrow"
-                    id="drp-arrow"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-chevron-down h-4 w-4"
-                  >
-                    <path d="m6 9 6 6 6-6"></path>
-                  </svg>
-  
-                  <ul class="dropdown">
-                    <li class="item">Blacklist</li>
-                    <li class="item">Whitelist</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="code-editor">
-                <div class="line-numbers" id="line-numbers">
-                  <span>1</span><br />
-                </div>
-                <textarea id="code-input" spellcheck="false"></textarea>
-              </div>
-     
-    `;
-  scriptsContainer.appendChild(scriptDiv);
-  count++;
-}

@@ -1,1247 +1,921 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Royal Downloader</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/reset.css" />
-    <link rel="stylesheet" href="./assets/css/variables.css" />
-    <link rel="stylesheet" href="./assets/css/components.css" />
-    <link rel="stylesheet" href="./assets/css/sidebar.css" />
-    <link rel="stylesheet" href="./assets/css/alerts.css" />
-    <link rel="stylesheet" href="./assets/css/theme.css" />
-  </head>
 
-  <body>
-    <div class="wrapper">
-      <!-- sidebar  -->
-      <div>
-        <aside class="sidebar">
-          <div class="sidebar-wrapper">
-            <div class="logo-wrapper">
-              <img
-                src="https://royal-downloader.netlify.app/_next/image?url=%2Flogo2.webp&w=48&q=75"
-                alt="Royal Downloader logo"
-                width="40px"
-                height="40px"
-                style="color: transparent"
-              />
-              <div>
-                <h3>Royal Downloader</h3>
-                <p class="desc">Updated: August 7, 2024</p>
-              </div>
-            </div>
-            <nav>
-              <ul class="list">
-                <li >
-                  <div class="nav-link active" data-target="general-setting">
-                    <span
-                      ><svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        fill="currentColor"
-                        viewBox="0 -960 960 960"
-                      >
-                        <path
-                          d="M459.27-144.92V-340.5h36.92v79.27h319.39v36.92H496.19v79.39zm-314.96-79.39v-36.92h198.04v36.92zm161.11-158.65v-78.89H144.31v-36.92h161.11v-79.38h36.93v195.19zm153.85-78.89v-36.92h356.31v36.92zm158.27-158.77v-195.57h36.92v79.38h161.12v36.93H654.46v79.26zm-473.23-79.26v-36.93h356.31v36.93z"
-                        ></path></svg></span
-                    ><span class="label">General Settings</span>
-                  </div>
-                </li>
-                <li>
-                  <div  class="nav-link" data-target="video-download">
-                    <span
-                      ><svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        fill="currentColor"
-                        viewBox="0 0 576 512"
-                      >
-                        <path
-                          d="M320 96c17.7 0 32 14.3 32 32v256c0 17.7-14.3 32-32 32H64c-17.7 0-32-14.3-32-32V128c0-17.7 14.3-32 32-32zM64 64C28.7 64 0 92.7 0 128v256c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64zm352 290.4 103.4 56.9c5.6 3.1 12 4.7 18.4 4.7 21.1 0 38.2-17.1 38.2-38.2V134.2c0-21.1-17.1-38.2-38.2-38.2-6.4 0-12.8 1.6-18.4 4.7L416 157.6v36.5l118.8-65.4c.9-.5 1.9-.8 3-.8 3.4 0 6.2 2.8 6.2 6.2v243.6c0 3.4-2.8 6.2-6.2 6.2-1 0-2.1-.3-3-.8L416 317.9zM224 352c8.8 0 16-7.2 16-16s-7.2-16-16-16h-73.4l132.7-132.7c6.2-6.2 6.2-16.4 0-22.6s-16.4-6.2-22.6 0L128 297.4V224c0-8.8-7.2-16-16-16s-16 7.2-16 16v112c0 8.8 7.2 16 16 16z"
-                        ></path></svg></span
-                    ><span class="label">Video Download</span></div
-                  >
-                </li>
-                <li>
-                  <div class="nav-link" data-target="audio-download" >
-                    <span
-                      ><svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        fill="currentColor"
-                        viewBox="0 0 512 512"
-                      >
-                        <path
-                          d="M512 23c0-12.7-10.3-23-23-23-2.3 0-4.6.3-6.8 1l-311 95.7C164.6 98.8 160 105 160 112v260.4c-17-12.7-39.4-20.4-64-20.4-53 0-96 35.8-96 80s43 80 96 80 96-35.8 96-80V246.3l288-88.6v150.7c-17-12.7-39.4-20.4-64-20.4-53 0-96 35.8-96 80s43 80 96 80 96-35.8 96-80V23m-32 345c0 21.3-22.9 48-64 48s-64-26.7-64-48 22.9-48 64-48 64 26.7 64 48m-320 64c0 21.3-22.9 48-64 48s-64-26.7-64-48 22.9-48 64-48 64 26.7 64 48m320-307.8-288 88.6v-89l288-88.6z"
-                        ></path></svg></span
-                    ><span class="label"
-                      >Audio Downloads &amp; Conversion</span
-                    ></div
-                  >
-                </li>
-                <li>
-                  <div
-                    class="nav-link"
-                   data-target="file-name"
-                    >
-                    <span
-                      ><svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        fill="currentColor"
-                        viewBox="0 -960 960 960"
-                      >
-                        <path
-                          d="M452.12-108.08v-214.04h55.96v78.89h304.65v55.96H508.08v79.19zm-304.85-79.19v-55.96h221.19v55.96zm135.46-205.04h58.89l42.37-119.92h192.33l42.06 119.92h59.08L507.58-851.92h-54.96zm119.12-170.23L478-777.77h4l76.15 215.23z"
-                        ></path></svg></span
-                    ><span class="label">File Naming Settings</span></div
-                  >
-                </li>
-                 <li>
-                  <div
-                    class="nav-link"
-                    data-target="custom-code"
-                    >
-                    <span
-                      ><svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        fill="currentColor"
-                        viewBox="0 -960 960 960"
-                      >
-                        <path
-                          d="M452.12-108.08v-214.04h55.96v78.89h304.65v55.96H508.08v79.19zm-304.85-79.19v-55.96h221.19v55.96zm135.46-205.04h58.89l42.37-119.92h192.33l42.06 119.92h59.08L507.58-851.92h-54.96zm119.12-170.23L478-777.77h4l76.15 215.23z"
-                        ></path></svg></span
-                    ><span class="label">Custom Code</span></div
-                  >
-                </li>
-                 <li>
-                  <div
-                    class="nav-link"
-                    data-target="custom-api"
-                    >
-                    <span
-                      ><svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        fill="currentColor"
-                        viewBox="0 -960 960 960"
-                      >
-                        <path
-                          d="M452.12-108.08v-214.04h55.96v78.89h304.65v55.96H508.08v79.19zm-304.85-79.19v-55.96h221.19v55.96zm135.46-205.04h58.89l42.37-119.92h192.33l42.06 119.92h59.08L507.58-851.92h-54.96zm119.12-170.23L478-777.77h4l76.15 215.23z"
-                        ></path></svg></span
-                    ><span class="label">Custom API</span></div
-                  >
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </aside>
-      </div>
-      <!-- Main Section  -->
-<main class="main">
-    <div class="setting-section show-content" id="general-setting">
-      <div class="setting-wrapper">
-        <h1>General Settings</h1>
-        <!-- Alerts  -->
-        <div class="alerts">
-          <div class="success-alert alert">
-            <div class="alert-text">
-              <span>
-                <svg
-                  width="24"
-                  height="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-              </span>
-              <div>
-                <h5>Success</h5>
-                <p class="desc">This is Success Description</p>
-                <button class="setting-btn">
-                  <span>
-                    <svg
-                      stroke="currentColor"
-                      fill="currentColor"
-                      stroke-width="0"
-                      version="1.1"
-                      viewBox="0 0 17 17"
-                      height="16"
-                      width="16"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g></g>
-                      <path
-                        d="M17 16v1h-17v-1h17zM13.354 8.854l-0.707-0.707-3.646 3.646v-11.793h-1v11.794l-3.647-3.648-0.708 0.708 4.854 4.853 4.854-4.853z"
-                      ></path></svg
-                  ></span>
-                  Download
-                </button>
-              </div>
-            </div>
-            <span class="cross-icon"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-x"
-              >
-                <path d="M18 6 6 18"></path>
-                <path d="m6 6 12 12"></path></svg
-            ></span>
-          </div>
-          <div class="error-alert alert">
-            <div class="alert-text">
-              <span>
-                <svg
-                  width="24"
-                  height="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  ></path>
-                </svg>
-              </span>
-              <div>
-                <h5>Error</h5>
-                <p class="desc" style="margin-bottom: 0">
-                  This is Error Description
-                </p>
-              </div>
-            </div>
-            <span class="cross-icon"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-x"
-              >
-                <path d="M18 6 6 18"></path>
-                <path d="m6 6 12 12"></path></svg
-            ></span>
-          </div>
-          <div class="info-alert alert">
-            <div class="alert-text">
-              <span>
-                <svg
-                  width="24"
-                  height="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
-                </svg>
-              </span>
-              <div>
-                <h5>Info</h5>
-                <p class="desc" style="margin-bottom: 0">
-                  This is Info Description
-                </p>
-              </div>
-            </div>
-            <span class="cross-icon"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-x"
-              >
-                <path d="M18 6 6 18"></path>
-                <path d="m6 6 12 12"></path></svg
-            ></span>
-          </div>
-          <div class="warn-alert alert">
-            <div class="alert-text">
-              <span>
-                <svg
-                  width="24"
-                  height="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                  ></path>
-                </svg>
-              </span>
-              <div>
-                <h5>Warning</h5>
-                <p class="desc" style="margin-bottom: 0">
-                  This is Warning Description
-                </p>
-              </div>
-            </div>
-            <span class="cross-icon"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-x"
-              >
-                <path d="M18 6 6 18"></path>
-                <path d="m6 6 12 12"></path></svg
-            ></span>
-          </div>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Royal Downloader</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/reset.css" />
+  <link rel="stylesheet" href="./assets/css/variables.css" />
+  <link rel="stylesheet" href="./assets/css/components.css" />
+  <link rel="stylesheet" href="./assets/css/sidebar.css" />
+  <link rel="stylesheet" href="./assets/css/alerts.css" />
+  <link rel="stylesheet" href="./assets/css/theme.css" />
+</head>
 
-        <div class="divider"></div>
-
-        <!-- Themes  -->
-        <section>
-          <h2>Choose a theme</h2>
-          <div class="theme-wrapper">
-            <div class="theme-card-box">
-              <div class="theme-card">
-                <div class="card-head">
-                  <div class="card-inner-head">
-                    <div class="card-tabs">
-                      <div class="tab">
-                        <div
-                          class="tab-item"
-                          style="background-color: rgb(236, 237, 239)"
-                        ></div>
-                        <div
-                          class="tab-item tab-item-2"
-                          style="background-color: rgb(236, 237, 239)"
-                        ></div>
-                      </div>
-                      <div
-                        class="tab-2"
-                        style="background-color: rgb(255, 255, 255)"
-                      >
-                        <div
-                          class="item"
-                          style="background-color: rgb(236, 237, 239)"
-                        ></div>
-                        <div
-                          class="item-2"
-                          style="background-color: rgb(236, 237, 239)"
-                        ></div>
-                      </div>
-                      <div
-                        class="tab-2"
-                        style="background-color: rgb(255, 255, 255)"
-                      >
-                        <div
-                          class="item"
-                          style="background-color: rgb(236, 237, 239)"
-                        ></div>
-                        <div
-                          class="item-2"
-                          style="background-color: rgb(236, 237, 239)"
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="radio-group" style="outline: none">
-                    <label
-                      class="radio-button"
-                      style="background-color: transparent !important"
-                    >
-                      <input
-                        type="radio"
-                        name="theme"
-                        value="Light Mode"
-                        checked
-                      />
-                      <div class="radio-circle"></div>
-                      <span class="radio-label label">Light Mode</span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="theme-card-box">
-              <div class="theme-card">
-                <div class="card-head">
-                  <div class="card-inner-head">
-                    <div class="card-tabs">
-                      <div
-                        class="tab"
-                        style="background-color: rgb(67, 67, 67)"
-                      >
-                        <div
-                          class="tab-item"
-                          style="background-color: rgb(125, 125, 125)"
-                        ></div>
-                        <div
-                          class="tab-item tab-item-2"
-                          style="background-color: rgb(125, 125, 125)"
-                        ></div>
-                      </div>
-                      <div
-                        class="tab-2"
-                        style="background-color: rgb(67, 67, 67)"
-                      >
-                        <div
-                          class="item"
-                          style="background-color: rgb(125, 125, 125)"
-                        ></div>
-                        <div
-                          class="item-2"
-                          style="background-color: rgb(125, 125, 125)"
-                        ></div>
-                      </div>
-                      <div
-                        class="tab-2"
-                        style="background-color: rgb(67, 67, 67)"
-                      >
-                        <div
-                          class="item"
-                          style="background-color: rgb(125, 125, 125)"
-                        ></div>
-                        <div
-                          class="item-2"
-                          style="background-color: rgb(125, 125, 125)"
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="radio-group" style="outline: none">
-                    <label
-                      class="radio-button"
-                      style="background-color: transparent !important"
-                    >
-                      <input type="radio" name="theme" value="Dark Mode" />
-                      <div class="radio-circle"></div>
-                      <span class="radio-label label">Dark Mode</span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="theme-card-box">
-              <div class="theme-card">
-                <div class="card-head">
-                  <div class="card-inner-head">
-                    <div class="card-tabs">
-                      <div class="tab gredient">
-                        <div
-                          class="tab-item"
-                          style="background-color: rgb(125, 125, 125)"
-                        ></div>
-                        <div
-                          class="tab-item tab-item-2"
-                          style="background-color: rgb(125, 125, 125)"
-                        ></div>
-                      </div>
-                      <div class="tab-2 gredient">
-                        <div
-                          class="item"
-                          style="background-color: rgb(125, 125, 125)"
-                        ></div>
-                        <div
-                          class="item-2"
-                          style="background-color: rgb(125, 125, 125)"
-                        ></div>
-                      </div>
-                      <div class="tab-2 gredient">
-                        <div
-                          class="item"
-                          style="background-color: rgb(125, 125, 125)"
-                        ></div>
-                        <div
-                          class="item-2"
-                          style="background-color: rgb(125, 125, 125)"
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="radio-group" style="outline: none">
-                    <label
-                      class="radio-button"
-                      style="background: transparent !important"
-                    >
-                      <input type="radio" name="theme" value="System" />
-                      <div class="radio-circle"></div>
-                      <span class="radio-label label">System </span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- Notification Section  -->
-        <section>
-          <div class="settings">
-            <h3>Notification Settings</h3>
-            <div class="setting-box">
-              <div class="setting-box-item">
-                <div class="setting-box-item-text">
-                  <h4>Download Start Notification</h4>
-                  <p class="desc">
-                    Notifies you when a download begins, indicating the
-                    initiation of the file transfer process.
-                  </p>
-                </div>
-                <div class="btn">
-                  <label class="switch">
-                    <input type="checkbox" id="triggerCheckbox" />
-                    <span class="slider"></span>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="setting-box mt-8">
-              <div class="setting-box-item">
-                <div class="setting-box-item-text">
-                  <h4>Download Complete Notification</h4>
-                  <p class="desc">
-                    Notifies you when a download finishes, confirming the
-                    successful completion of the file transfer.
-                  </p>
-                </div>
-                <div class="btn">
-                  <label class="switch">
-                    <input type="checkbox" />
-                    <span class="slider"></span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Download Settings Section  -->
-        <section>
-          <div class="settings">
-            <h3>Download Settings</h3>
-            <div class="setting-box">
-              <div class="setting-box-item">
-                <div class="setting-box-item-text">
-                  <h4>Always Ask for Download Location</h4>
-                  <p class="desc">
-                    Prompts you to select a download location every time,
-                    giving you control over where each file is saved.
-                  </p>
-                </div>
-                <div class="btn">
-                  <label class="switch">
-                    <input type="checkbox" id="triggerCheckbox" />
-                    <span class="slider"></span>
-                  </label>
-                </div>
-        </section>
-        <!-- Settings Management Section  -->
-        <section>
-          <div class="settings">
-            <h3>Settings Management</h3>
-            <div class="setting-box">
-              <div class="setting-box-item">
-                <div class="setting-box-item-text">
-                  <h4>Import Settings</h4>
-                  <p class="desc">
-                    Load and apply previously saved settings from a file,
-                    allowing you to quickly restore your preferred
-                    configuration.
-                  </p>
-                </div>
-                <div class="btn">
-                  <button class="setting-btn" onclick="showLoader(this)">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      class="loader-hide loader"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
-                    </svg>
-                    Import
-                    <input type="file" accept="image/*">
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="setting-box mt-8">
-              <div class="setting-box-item">
-                <div class="setting-box-item-text">
-                  <h4>Export Settings</h4>
-                  <p class="desc">
-                    Save your current settings to a file, enabling easy
-                    backup or transfer to another device.
-                  </p>
-                </div>
-                <div class="btn">
-                  <button class="setting-btn" onclick="showLoader(this)">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      class="loader-hide loader"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
-                    </svg>
-                    Export
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="setting-box mt-8">
-              <div class="setting-box-item">
-                <div class="setting-box-item-text">
-                  <h4>Reset to Default</h4>
-                  <p class="desc">
-                    Revert all settings to their original default values,
-                    clearing any customizations and starting fresh.
-                  </p>
-                </div>
-                <div class="btn">
-                  <button class="setting-btn open-modal-btn">
-                    Reset Settings
-                  </button>
-                </div>
-                <div class="modal-overlay hide">
-                  <div class="modal-wrapper">
-                    <div class="modal-content">
-                      <h2>Reset Extension Settings</h2>
-                      <p>
-                        Are you sure you want to reset all extension
-                        settings to their default values? This action will
-                        erase any custom configurations, and cannot be
-                        undone. Confirm to proceed with resetting the
-                        settings.
-                      </p>
-                    </div>
-                    <div class="close-btn-wrapper">
-                      <button class="close-modal-btn">Cancel</button>
-                      <button class="close-modal-btn reset-btn">
-                        Reset
-                      </button>
-                    </div>
-                  </div>
-                </div>
-      </div>
-    </div>
-    </div>
-        </section>
-      </div>
-</div>
-<!-- Video Download Section  -->
-   <section class="setting-section hide-content" id="video-download">
-     <div class="setting-wrapper">
-       <h1>Video Downloads</h1>
-   
-       <!-- Whitelisted Video Formats -->
-       <div class="setting-box mt-8">
-         <div class="setting-box-item" style="flex-direction: column">
-           <div class="setting-box-item-text">
-             <h4>Whitelisted Video Formats for Downloads</h4>
-             <p class="desc">
-               Specifies the allowed video file formats for downloading,
-               displayed in the download menu for easy selection and
-               compatibility.
-             </p>
-           </div>
-           <div class="checkboxs" style="padding-bottom: 8px">
-             <label class="checkbox checkbox-label checked" >
-               <input type="checkbox" name="mp4" id="mp4" checked disabled/>
-               MP4
-             </label>
-             <label class="checkbox checkbox-label">
-               <input type="checkbox" name="AVI" id="AVI" />
-               AVI
-             </label>
-             <label class="checkbox checkbox-label">
-               <input type="checkbox" name="MKV" id="MKV" />
-               MKV
-             </label>
-             <label class="checkbox checkbox-label">
-               <input type="checkbox" name="MOV" id="MOV" />
-               MOV
-             </label>
-             <label class="checkbox checkbox-label">
-               <input type="checkbox" name="WMV" id="WMV" />
-               WMV
-             </label>
-             <label class="checkbox checkbox-label">
-               <input type="checkbox" name="FLV" id="FLV" />
-               FLV
-             </label>
-             <label class="checkbox checkbox-label">
-               <input type="checkbox" name="WebM" id="WebM" />
-               WebM
-             </label>
-             <label class="checkbox checkbox-label">
-               <input type="checkbox" name="MPEG" id="MPEG" />
-               MPEG
-             </label>
-             <label class="checkbox checkbox-label">
-               <input type="checkbox" name="3gp" id="3gp" />
-               3GP
-             </label>
-             <label class="checkbox checkbox-label">
-               <input type="checkbox" name="AVCHD" id="AVCHD" />
-               AVCHD
-             </label>
-           </div>
-         </div>
-       </div>
-   
-       <!-- Enable Copy Download Links -->
-       <div class="setting-box mt-8">
-         <div class="setting-box-item">
-           <div class="setting-box-item-text">
-             <h4>Enable Copy Download Links to Clipboard</h4>
-             <p class="desc">
-               Automatically copies download links to the clipboard, with a
-               button displayed in the download menu for easy access.
-             </p>
-           </div>
-           <div class="btn">
-             <label class="switch">
-               <input type="checkbox" />
-               <span class="slider"></span>
-             </label>
-           </div>
-         </div>
-       </div>
-   
-       <!-- Enable QR Code -->
-       <div class="setting-box mt-8">
-         <div class="setting-box-item">
-           <div class="setting-box-item-text">
-             <h4>Enable QR Code for Download Links</h4>
-             <p class="desc">
-               Generates a QR code for download links, allowing quick
-               access and sharing via mobile devices.
-             </p>
-           </div>
-           <div class="btn">
-             <label class="switch">
-               <input type="checkbox" />
-               <span class="slider"></span>
-             </label>
-           </div>
-         </div>
-       </div>
-   
-       <!-- Add Video Based on Size -->
-       <div class="setting-box mt-8">
-         <div
-           class="setting-box-item"
-           style="flex-direction: column; align-items: start"
-         >
-           <div class="setting-box-item-text">
-             <h4>Add Video for Download if Size Exceeds</h4>
-             <p class="desc">
-               Automatically adds videos for download only if their size
-               exceeds a specified limit.
-             </p>
-           </div>
-           <div class="radio-btn">
-             <div class="radio-wrapper">
-               <div class="radio-group radio-gap-xl">
-                 <label class="radio-button checkbox checkbox-label">
-                   <input
-                     type="radio"
-                     name="option"
-                     value="100 KB"
-                     checked
-                   />
-                   <div class="radio-circle"></div>
-                   <span class="radio-label label">100 KB</span>
-                 </label>
-                 <label class="radio-button checkbox checkbox-label">
-                   <input type="radio" name="option" value="1 MB" />
-                   <div class="radio-circle"></div>
-                   <span class="radio-label label">1 MB</span>
-                 </label>
-                 <label class="radio-button checkbox checkbox-label">
-                   <input type="radio" name="option" value="2 MB" />
-                   <div class="radio-circle"></div>
-                   <span class="radio-label label">2 MB</span>
-                 </label>
-                 <label class="radio-button checkbox checkbox-label">
-                   <input type="radio" name="option" value="Custom" />
-                   <div class="radio-circle"></div>
-                   <span class="radio-label label">Custom</span>
-                 </label>
-               </div>
-               <div class="input-wrapper2">
-                 <input
-                   type="number"
-                   name="size"
-                   id="size"
-                   class="size-limit-input"
-                   placeholder="Set Size Limit"
-                 />
-                 <select name="unit" id="unit" class="size-select">
-                   <option value="kb">KB</option>
-                   <option value="mb">MB</option>
-                   <option value="gb">GB</option>
-                   <option value="tb">TB</option>
-                 </select>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-   </section>
- <!-- Audio Downloads Section  -->
-  <section class="setting-section hide-content" id="audio-download">
-    <div class="setting-wrapper">
-      <h1>Audio Download</h1>
-      <div class="setting-box mt-8">
-        <div class="setting-box-item" style="flex-direction: column">
-          <div class="setting-box-item-text">
-            <h4>Preferred Audio Formats for Downloads</h4>
-            <p class="desc">
-              Specify your preferred audio file formats for downloads.
-              Your selected formats will be prioritized during the
-              download process.
-            </p>
-          </div>
-          <div class="checkboxs">
-            <label class="checkbox checkbox-label checked">
-              <input type="checkbox" name="mp3" id="mp3" checked disabled/>
-              MP3
-            </label>
-            <label class="checkbox checkbox-label">
-              <input type="checkbox" name="WAV" id="WAV" />
-              WAV
-            </label>
-            <label class="checkbox checkbox-label">
-              <input type="checkbox" name="AAC" id="AAC" />
-              AAC
-            </label>
-            <label class="checkbox checkbox-label">
-              <input type="checkbox" name="FLAC" id="FLAC" />
-              FLAC
-            </label>
-            <label class="checkbox checkbox-label">
-              <input type="checkbox" name="ALAC" id="ALAC" />
-              ALAC
-            </label>
-            <label class="checkbox checkbox-label">
-              <input type="checkbox" name="OGG" id="OGG" />
-              OGG
-            </label>
-            <label class="checkbox checkbox-label">
-              <input type="checkbox" name="WMA" id="WMA" />
-              WMA
-            </label>
-            <label class="checkbox checkbox-label">
-              <input type="checkbox" name="AIFF" id="AIFF" />
-              AIFF
-            </label>
-            <label class="checkbox checkbox-label">
-              <input type="checkbox" name="M4A" id="M4A" />
-              M4A
-            </label>
-            <label class="checkbox checkbox-label">
-              <input type="checkbox" name="Opus" id="Opus" />
-              Opus
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
- <!-- File Naming Setting  -->
-  <section class="setting-section hide-content" id="file-name">
-    <div class="setting-wrapper">
-      <h1>File Naming Settings</h1>
-      <div class="setting-box mt-8">
-        <div class="setting-box-item">
-          <div style="padding: 8px 0; width: 100%">
-            <h4>File Naming Settings</h4>
-            <div class="tag-container">
-              <div class="tag-input-wrapper">
-                <div id="tags-container" class="tag-input"></div>
-              </div>
-              <div class="tag-options">
-                <button
-                  class="tag-btn"
-                  onclick="addTag('Filename')"
-                  disabled
-                >
-                  Filename
-                </button>
-                <button
-                  class="tag-btn"
-                  onclick="addTag('Source Website')"
-                >
-                  Source Website
-                </button>
-                <button class="tag-btn" onclick="addTag('Quality')">
-                  Quality
-                </button>
-                <button class="tag-btn" onclick="addTag('Date')">
-                  Date
-                </button>
-                <button class="tag-btn" onclick="addTag('Time')">
-                  Time
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="setting-box mt-8">
-        <div class="setting-box-item select-box-item">
-          <div class="setting-box-item-text">
-            <h4>File Naming Strategy</h4>
-            <p class="desc">
-              Set the default naming convention for downloaded or saved
-              files with various customizable options
-            </p>
-          </div>
-          <div class="wrapper-dropdown" id="dropdown">
-            <span class="selected-display" id="destination"
-              >Use Original Name</span
-            >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              class="arrow"
-              id="drp-arrow"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-chevron-down h-4 w-4"
-            >
-              <path d="m6 9 6 6 6-6"></path>
-            </svg>
-
-            <ul class="dropdown">
-              <li class="item">Use Original Name</li>
-              <li class="item">Custom Prefix/Suffix</li>
-              <li class="item">Pattern-Based Naming</li>
-              <li class="item">Use Page Title for Name</li>
-              <li class="item">File Header Request for Name</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="setting-box mt-8">
-        <div
-          class="setting-box-item"
-          style="flex-direction: column; align-items: start"
-        >
-          <div class="setting-box-item-text">
-            <h4>File Name Conflicts</h4>
-            <p class="desc">
-              Resolves conflicts when files with the same name are
-              downloaded or saved, ensuring that existing files are not
-              overwritten.
-            </p>
-          </div>
-          <div class="radio-btn">
-            <div class="radio-wrapper">
-              <div class="radio-group radio-gap-xl">
-                <label class="radio-button checkbox checkbox-label">
-                  <input
-                    type="radio"
-                    name="option"
-                    value="Ask Every Time"
-                  />
-                  <div class="radio-circle"></div>
-                  <span class="radio-label label">Ask Every Time</span>
-                </label>
-                <label class="radio-button checkbox checkbox-label">
-                  <input type="radio" name="option" value="Auto-Rename" />
-                  <div class="radio-circle"></div>
-                  <span class="radio-label label">Auto-Rename</span>
-                </label>
-                <label class="radio-button checkbox checkbox-label">
-                  <input
-                    type="radio"
-                    name="option"
-                    value="Overwrite Existing"
-                  />
-                  <div class="radio-circle"></div>
-                  <span class="radio-label label"
-                    >Overwrite Existing</span
-                  >
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="setting-box mt-8">
-        <div class="setting-box-item">
-          <div class="setting-box-item-text">
-            <h4>Remove Special Characters</h4>
-            <p class="desc">
-              Automatically removes unsupported special characters from
-              file names, such as \ / : * ? " < > |, to ensure
-              compatibility and prevent errors during saving or
-              downloading.
-            </p>
-          </div>
-          <div class="btn">
-            <label class="switch">
-              <input
-                type="checkbox"
-                data-target="input1"
-                onchange="toggleInput(this)"
-              />
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-        <div class="box-input" id="input1">
-          <input type="text" placeholder="Replace with (e.g., '-')" />
-        </div>
-      </div>
-      <div class="setting-box mt-8">
-        <div class="setting-box-item">
-          <div class="setting-box-item-text">
-            <h4>File Name Character Limit</h4>
-            <p class="desc">
-              Sets a maximum character limit for file names to ensure
-              compatibility across different systems and prevent errors
-              during saving or downloading.
-            </p>
-          </div>
-          <div class="btn">
-            <label class="switch">
-              <input
-                type="checkbox"
-                data-target="input2"
-                onchange="toggleInput(this)"
-              />
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-        <div class="box-input" id="input2">
-          <input type="text" placeholder="Set Character Limit" />
-        </div>
-      </div>
-      <div class="setting-box mt-8">
-        <div class="setting-box-item">
-          <div class="setting-box-item-text">
-            <h4>File Name Case Management</h4>
-            <p class="desc">
-              Defines whether file names should be automatically converted
-              to uppercase, lowercase, or retain their original case
-              during saving or downloading.
-            </p>
-          </div>
-          <div class="btn">
-            <label class="switch">
-              <input
-                type="checkbox"
-                data-target="input3"
-                onchange="toggleInput(this)"
-              />
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-        <div class="box-input" id="input3">
-          <div class="radio-btn">
-            <div class="radio-wrapper">
-              <div class="radio-group radio-gap-xl">
-                <label class="radio-button checkbox checkbox-label">
-                  <input
-                    type="radio"
-                    name="option"
-                    value="Original Case"
-                  />
-                  <div class="radio-circle"></div>
-                  <span class="radio-label label">Original Case</span>
-                </label>
-                <label class="radio-button checkbox checkbox-label">
-                  <input
-                    type="radio"
-                    name="option"
-                    value="Convert to Lowercase"
-                  />
-                  <div class="radio-circle"></div>
-                  <span class="radio-label label"
-                    >Convert to Lowercase</span
-                  >
-                </label>
-                <label class="radio-button checkbox checkbox-label">
-                  <input
-                    type="radio"
-                    name="option"
-                    value="Convert to Uppercase"
-                  />
-                  <div class="radio-circle"></div>
-                  <span class="radio-label label"
-                    >Convert to Uppercase</span
-                  >
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-<!-- Custom Code  -->
-  <section class="setting-section hide-content" id="custom-code">
-    <div class="setting-wrapper">
-      <h1>Custom Code</h1>
-      <div class="setting-box mt-8">
-        <div class="setting-box-item">
-     
-          <div style="padding: 8px 0; width: 100%">
+<body>
+  <div class="wrapper">
+    <!-- sidebar  -->
+    <div>
+      <aside class="sidebar">
+        <div class="sidebar-wrapper">
+          <div class="logo-wrapper">
+            <img src="https://royal-downloader.netlify.app/_next/image?url=%2Flogo2.webp&w=48&q=75"
+              alt="Royal Downloader logo" width="40px" height="40px" style="color: transparent" />
             <div>
-              <h4>Custom Content Script</h4>
-              <button class="new">Add New</button>
+              <h3>Royal Downloader</h3>
+              <p class="desc">Updated: August 7, 2024</p>
             </div>
-            <div id="scripts"></div>
-          
           </div>
+          <nav>
+            <ul class="list">
+              <li>
+                <div class="nav-link active" data-target="general-setting">
+                  <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                      viewBox="0 -960 960 960">
+                      <path
+                        d="M459.27-144.92V-340.5h36.92v79.27h319.39v36.92H496.19v79.39zm-314.96-79.39v-36.92h198.04v36.92zm161.11-158.65v-78.89H144.31v-36.92h161.11v-79.38h36.93v195.19zm153.85-78.89v-36.92h356.31v36.92zm158.27-158.77v-195.57h36.92v79.38h161.12v36.93H654.46v79.26zm-473.23-79.26v-36.93h356.31v36.93z">
+                      </path>
+                    </svg></span><span class="label">General Settings</span>
+                </div>
+              </li>
+              <li>
+                <div class="nav-link" data-target="video-download">
+                  <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                      viewBox="0 0 576 512">
+                      <path
+                        d="M320 96c17.7 0 32 14.3 32 32v256c0 17.7-14.3 32-32 32H64c-17.7 0-32-14.3-32-32V128c0-17.7 14.3-32 32-32zM64 64C28.7 64 0 92.7 0 128v256c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64zm352 290.4 103.4 56.9c5.6 3.1 12 4.7 18.4 4.7 21.1 0 38.2-17.1 38.2-38.2V134.2c0-21.1-17.1-38.2-38.2-38.2-6.4 0-12.8 1.6-18.4 4.7L416 157.6v36.5l118.8-65.4c.9-.5 1.9-.8 3-.8 3.4 0 6.2 2.8 6.2 6.2v243.6c0 3.4-2.8 6.2-6.2 6.2-1 0-2.1-.3-3-.8L416 317.9zM224 352c8.8 0 16-7.2 16-16s-7.2-16-16-16h-73.4l132.7-132.7c6.2-6.2 6.2-16.4 0-22.6s-16.4-6.2-22.6 0L128 297.4V224c0-8.8-7.2-16-16-16s-16 7.2-16 16v112c0 8.8 7.2 16 16 16z">
+                      </path>
+                    </svg></span><span class="label">Video Download</span>
+                </div>
+              </li>
+              <li>
+                <div class="nav-link" data-target="audio-download">
+                  <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                      viewBox="0 0 512 512">
+                      <path
+                        d="M512 23c0-12.7-10.3-23-23-23-2.3 0-4.6.3-6.8 1l-311 95.7C164.6 98.8 160 105 160 112v260.4c-17-12.7-39.4-20.4-64-20.4-53 0-96 35.8-96 80s43 80 96 80 96-35.8 96-80V246.3l288-88.6v150.7c-17-12.7-39.4-20.4-64-20.4-53 0-96 35.8-96 80s43 80 96 80 96-35.8 96-80V23m-32 345c0 21.3-22.9 48-64 48s-64-26.7-64-48 22.9-48 64-48 64 26.7 64 48m-320 64c0 21.3-22.9 48-64 48s-64-26.7-64-48 22.9-48 64-48 64 26.7 64 48m320-307.8-288 88.6v-89l288-88.6z">
+                      </path>
+                    </svg></span><span class="label">Audio Downloads &amp; Conversion</span>
+                </div>
+              </li>
+              <li>
+                <div class="nav-link" data-target="file-name">
+                  <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                      viewBox="0 -960 960 960">
+                      <path
+                        d="M452.12-108.08v-214.04h55.96v78.89h304.65v55.96H508.08v79.19zm-304.85-79.19v-55.96h221.19v55.96zm135.46-205.04h58.89l42.37-119.92h192.33l42.06 119.92h59.08L507.58-851.92h-54.96zm119.12-170.23L478-777.77h4l76.15 215.23z">
+                      </path>
+                    </svg></span><span class="label">File Naming Settings</span>
+                </div>
+              </li>
+              <li>
+                <div class="nav-link" data-target="custom-code">
+                  <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                      viewBox="0 -960 960 960">
+                      <path
+                        d="M452.12-108.08v-214.04h55.96v78.89h304.65v55.96H508.08v79.19zm-304.85-79.19v-55.96h221.19v55.96zm135.46-205.04h58.89l42.37-119.92h192.33l42.06 119.92h59.08L507.58-851.92h-54.96zm119.12-170.23L478-777.77h4l76.15 215.23z">
+                      </path>
+                    </svg></span><span class="label">Custom Code</span>
+                </div>
+              </li>
+              <li>
+                <div class="nav-link" data-target="custom-api">
+                  <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                      viewBox="0 -960 960 960">
+                      <path
+                        d="M452.12-108.08v-214.04h55.96v78.89h304.65v55.96H508.08v79.19zm-304.85-79.19v-55.96h221.19v55.96zm135.46-205.04h58.89l42.37-119.92h192.33l42.06 119.92h59.08L507.58-851.92h-54.96zm119.12-170.23L478-777.77h4l76.15 215.23z">
+                      </path>
+                    </svg></span><span class="label">Custom API</span>
+                </div>
+              </li>
+            </ul>
+          </nav>
         </div>
-      </div>
-      <div class="setting-box mt-8">
-        <div class="setting-box-item">
-          <div style="padding: 8px 0; width: 100%">
-            <h4>Background Script</h4>
+      </aside>
+    </div>
+    <!-- Main Section  -->
+    <main class="main">
+      <div class="setting-section show-content" id="general-setting">
+        <div class="setting-wrapper">
+          <h1>General Settings</h1>
+          <!-- Alerts  -->
+          <div class="alerts">
+            <div class="success-alert alert">
+              <div class="alert-text">
+                <span>
+                  <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </span>
+                <div>
+                  <h5>Success</h5>
+                  <p class="desc">This is Success Description</p>
+                  <button class="setting-btn">
+                    <span>
+                      <svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" viewBox="0 0 17 17"
+                        height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+                        <g></g>
+                        <path
+                          d="M17 16v1h-17v-1h17zM13.354 8.854l-0.707-0.707-3.646 3.646v-11.793h-1v11.794l-3.647-3.648-0.708 0.708 4.854 4.853 4.854-4.853z">
+                        </path>
+                      </svg></span>
+                    Download
+                  </button>
+                </div>
+              </div>
+              <span class="cross-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-x">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg></span>
+            </div>
+            <div class="error-alert alert">
+              <div class="alert-text">
+                <span>
+                  <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                  </svg>
+                </span>
+                <div>
+                  <h5>Error</h5>
+                  <p class="desc" style="margin-bottom: 0">
+                    This is Error Description
+                  </p>
+                </div>
+              </div>
+              <span class="cross-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-x">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg></span>
+            </div>
+            <div class="info-alert alert">
+              <div class="alert-text">
+                <span>
+                  <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </span>
+                <div>
+                  <h5>Info</h5>
+                  <p class="desc" style="margin-bottom: 0">
+                    This is Info Description
+                  </p>
+                </div>
+              </div>
+              <span class="cross-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-x">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg></span>
+            </div>
+            <div class="warn-alert alert">
+              <div class="alert-text">
+                <span>
+                  <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                    </path>
+                  </svg>
+                </span>
+                <div>
+                  <h5>Warning</h5>
+                  <p class="desc" style="margin-bottom: 0">
+                    This is Warning Description
+                  </p>
+                </div>
+              </div>
+              <span class="cross-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-x">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg></span>
+            </div>
+          </div>
 
-            <input
-              type="text"
-              name="Background Script"
-              id="Background Script"
-              class="tag-input"
-              placeholder="Background Script"
-              style="margin-top: 0.8rem"
-            />
+          <div class="divider"></div>
+
+          <!-- Themes  -->
+          <section>
+            <h2>Choose a theme</h2>
+            <div class="theme-wrapper">
+              <div class="theme-card-box">
+                <div class="theme-card">
+                  <div class="card-head">
+                    <div class="card-inner-head">
+                      <div class="card-tabs">
+                        <div class="tab">
+                          <div class="tab-item" style="background-color: rgb(236, 237, 239)"></div>
+                          <div class="tab-item tab-item-2" style="background-color: rgb(236, 237, 239)"></div>
+                        </div>
+                        <div class="tab-2" style="background-color: rgb(255, 255, 255)">
+                          <div class="item" style="background-color: rgb(236, 237, 239)"></div>
+                          <div class="item-2" style="background-color: rgb(236, 237, 239)"></div>
+                        </div>
+                        <div class="tab-2" style="background-color: rgb(255, 255, 255)">
+                          <div class="item" style="background-color: rgb(236, 237, 239)"></div>
+                          <div class="item-2" style="background-color: rgb(236, 237, 239)"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="radio-group" style="outline: none">
+                      <label class="radio-button" style="background-color: transparent !important">
+                        <input type="radio" name="theme" value="Light Mode" checked />
+                        <div class="radio-circle"></div>
+                        <span class="radio-label label">Light Mode</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="theme-card-box">
+                <div class="theme-card">
+                  <div class="card-head">
+                    <div class="card-inner-head">
+                      <div class="card-tabs">
+                        <div class="tab" style="background-color: rgb(67, 67, 67)">
+                          <div class="tab-item" style="background-color: rgb(125, 125, 125)"></div>
+                          <div class="tab-item tab-item-2" style="background-color: rgb(125, 125, 125)"></div>
+                        </div>
+                        <div class="tab-2" style="background-color: rgb(67, 67, 67)">
+                          <div class="item" style="background-color: rgb(125, 125, 125)"></div>
+                          <div class="item-2" style="background-color: rgb(125, 125, 125)"></div>
+                        </div>
+                        <div class="tab-2" style="background-color: rgb(67, 67, 67)">
+                          <div class="item" style="background-color: rgb(125, 125, 125)"></div>
+                          <div class="item-2" style="background-color: rgb(125, 125, 125)"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="radio-group" style="outline: none">
+                      <label class="radio-button" style="background-color: transparent !important">
+                        <input type="radio" name="theme" value="Dark Mode" />
+                        <div class="radio-circle"></div>
+                        <span class="radio-label label">Dark Mode</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="theme-card-box">
+                <div class="theme-card">
+                  <div class="card-head">
+                    <div class="card-inner-head">
+                      <div class="card-tabs">
+                        <div class="tab gredient">
+                          <div class="tab-item" style="background-color: rgb(125, 125, 125)"></div>
+                          <div class="tab-item tab-item-2" style="background-color: rgb(125, 125, 125)"></div>
+                        </div>
+                        <div class="tab-2 gredient">
+                          <div class="item" style="background-color: rgb(125, 125, 125)"></div>
+                          <div class="item-2" style="background-color: rgb(125, 125, 125)"></div>
+                        </div>
+                        <div class="tab-2 gredient">
+                          <div class="item" style="background-color: rgb(125, 125, 125)"></div>
+                          <div class="item-2" style="background-color: rgb(125, 125, 125)"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="radio-group" style="outline: none">
+                      <label class="radio-button" style="background: transparent !important">
+                        <input type="radio" name="theme" value="System" />
+                        <div class="radio-circle"></div>
+                        <span class="radio-label label">System </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Notification Section  -->
+          <section>
+            <div class="settings">
+              <h3>Notification Settings</h3>
+              <div class="setting-box">
+                <div class="setting-box-item">
+                  <div class="setting-box-item-text">
+                    <h4>Download Start Notification</h4>
+                    <p class="desc">
+                      Notifies you when a download begins, indicating the
+                      initiation of the file transfer process.
+                    </p>
+                  </div>
+                  <div class="btn">
+                    <label class="switch">
+                      <input type="checkbox" id="triggerCheckbox" />
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="setting-box mt-8">
+                <div class="setting-box-item">
+                  <div class="setting-box-item-text">
+                    <h4>Download Complete Notification</h4>
+                    <p class="desc">
+                      Notifies you when a download finishes, confirming the
+                      successful completion of the file transfer.
+                    </p>
+                  </div>
+                  <div class="btn">
+                    <label class="switch">
+                      <input type="checkbox" />
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Download Settings Section  -->
+          <section>
+            <div class="settings">
+              <h3>Download Settings</h3>
+              <div class="setting-box">
+                <div class="setting-box-item">
+                  <div class="setting-box-item-text">
+                    <h4>Always Ask for Download Location</h4>
+                    <p class="desc">
+                      Prompts you to select a download location every time,
+                      giving you control over where each file is saved.
+                    </p>
+                  </div>
+                  <div class="btn">
+                    <label class="switch">
+                      <input type="checkbox" id="triggerCheckbox" />
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+          </section>
+          <!-- Settings Management Section  -->
+          <section>
+            <div class="settings">
+              <h3>Settings Management</h3>
+              <div class="setting-box">
+                <div class="setting-box-item">
+                  <div class="setting-box-item-text">
+                    <h4>Import Settings</h4>
+                    <p class="desc">
+                      Load and apply previously saved settings from a file,
+                      allowing you to quickly restore your preferred
+                      configuration.
+                    </p>
+                  </div>
+                  <div class="btn">
+                    <button class="setting-btn" onclick="showLoader(this)">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        class="loader-hide loader" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+                      </svg>
+                      Import
+                      <input type="file" accept="image/*">
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="setting-box mt-8">
+                <div class="setting-box-item">
+                  <div class="setting-box-item-text">
+                    <h4>Export Settings</h4>
+                    <p class="desc">
+                      Save your current settings to a file, enabling easy
+                      backup or transfer to another device.
+                    </p>
+                  </div>
+                  <div class="btn">
+                    <button class="setting-btn" onclick="showLoader(this)">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        class="loader-hide loader" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+                      </svg>
+                      Export
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="setting-box mt-8">
+                <div class="setting-box-item">
+                  <div class="setting-box-item-text">
+                    <h4>Reset to Default</h4>
+                    <p class="desc">
+                      Revert all settings to their original default values,
+                      clearing any customizations and starting fresh.
+                    </p>
+                  </div>
+                  <div class="btn">
+                    <button class="setting-btn open-modal-btn">
+                      Reset Settings
+                    </button>
+                  </div>
+                  <div class="modal-overlay hide">
+                    <div class="modal-wrapper">
+                      <div class="modal-content">
+                        <h2>Reset Extension Settings</h2>
+                        <p>
+                          Are you sure you want to reset all extension
+                          settings to their default values? This action will
+                          erase any custom configurations, and cannot be
+                          undone. Confirm to proceed with resetting the
+                          settings.
+                        </p>
+                      </div>
+                      <div class="close-btn-wrapper">
+                        <button class="close-modal-btn">Cancel</button>
+                        <button class="close-modal-btn reset-btn">
+                          Reset
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <!-- Video Download Section  -->
+      <section class="setting-section hide-content" id="video-download">
+        <div class="setting-wrapper">
+          <h1>Video Downloads</h1>
+
+          <!-- Whitelisted Video Formats -->
+          <div class="setting-box mt-8">
+            <div class="setting-box-item" style="flex-direction: column">
+              <div class="setting-box-item-text">
+                <h4>Whitelisted Video Formats for Downloads</h4>
+                <p class="desc">
+                  Specifies the allowed video file formats for downloading,
+                  displayed in the download menu for easy selection and
+                  compatibility.
+                </p>
+              </div>
+              <div class="checkboxs" style="padding-bottom: 8px">
+                <label class="checkbox checkbox-label checked">
+                  <input type="checkbox" name="mp4" id="mp4" checked disabled />
+                  MP4
+                </label>
+                <label class="checkbox checkbox-label">
+                  <input type="checkbox" name="AVI" id="AVI" />
+                  AVI
+                </label>
+                <label class="checkbox checkbox-label">
+                  <input type="checkbox" name="MKV" id="MKV" />
+                  MKV
+                </label>
+                <label class="checkbox checkbox-label">
+                  <input type="checkbox" name="MOV" id="MOV" />
+                  MOV
+                </label>
+                <label class="checkbox checkbox-label">
+                  <input type="checkbox" name="WMV" id="WMV" />
+                  WMV
+                </label>
+                <label class="checkbox checkbox-label">
+                  <input type="checkbox" name="FLV" id="FLV" />
+                  FLV
+                </label>
+                <label class="checkbox checkbox-label">
+                  <input type="checkbox" name="WebM" id="WebM" />
+                  WebM
+                </label>
+                <label class="checkbox checkbox-label">
+                  <input type="checkbox" name="MPEG" id="MPEG" />
+                  MPEG
+                </label>
+                <label class="checkbox checkbox-label">
+                  <input type="checkbox" name="3gp" id="3gp" />
+                  3GP
+                </label>
+                <label class="checkbox checkbox-label">
+                  <input type="checkbox" name="AVCHD" id="AVCHD" />
+                  AVCHD
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enable Copy Download Links -->
+          <div class="setting-box mt-8">
+            <div class="setting-box-item">
+              <div class="setting-box-item-text">
+                <h4>Enable Copy Download Links to Clipboard</h4>
+                <p class="desc">
+                  Automatically copies download links to the clipboard, with a
+                  button displayed in the download menu for easy access.
+                </p>
+              </div>
+              <div class="btn">
+                <label class="switch">
+                  <input type="checkbox" />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enable QR Code -->
+          <div class="setting-box mt-8">
+            <div class="setting-box-item">
+              <div class="setting-box-item-text">
+                <h4>Enable QR Code for Download Links</h4>
+                <p class="desc">
+                  Generates a QR code for download links, allowing quick
+                  access and sharing via mobile devices.
+                </p>
+              </div>
+              <div class="btn">
+                <label class="switch">
+                  <input type="checkbox" />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add Video Based on Size -->
+          <div class="setting-box mt-8">
+            <div class="setting-box-item" style="flex-direction: column; align-items: start">
+              <div class="setting-box-item-text">
+                <h4>Add Video for Download if Size Exceeds</h4>
+                <p class="desc">
+                  Automatically adds videos for download only if their size
+                  exceeds a specified limit.
+                </p>
+              </div>
+              <div class="radio-btn">
+                <div class="radio-wrapper">
+                  <div class="radio-group radio-gap-xl">
+                    <label class="radio-button checkbox checkbox-label">
+                      <input type="radio" name="option" value="100 KB" checked />
+                      <div class="radio-circle"></div>
+                      <span class="radio-label label">100 KB</span>
+                    </label>
+                    <label class="radio-button checkbox checkbox-label">
+                      <input type="radio" name="option" value="1 MB" />
+                      <div class="radio-circle"></div>
+                      <span class="radio-label label">1 MB</span>
+                    </label>
+                    <label class="radio-button checkbox checkbox-label">
+                      <input type="radio" name="option" value="2 MB" />
+                      <div class="radio-circle"></div>
+                      <span class="radio-label label">2 MB</span>
+                    </label>
+                    <label class="radio-button checkbox checkbox-label">
+                      <input type="radio" name="option" value="Custom" />
+                      <div class="radio-circle"></div>
+                      <span class="radio-label label">Custom</span>
+                    </label>
+                  </div>
+                  <div class="input-wrapper2">
+                    <input type="number" name="size" id="size" class="size-limit-input" placeholder="Set Size Limit" />
+                    <select name="unit" id="unit" class="size-select">
+                      <option value="kb">KB</option>
+                      <option value="mb">MB</option>
+                      <option value="gb">GB</option>
+                      <option value="tb">TB</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-<!-- Custom API -->
-<section class="setting-section hide-content" id="custom-api">
-  <div class="setting-wrapper">
-    <h1>Custom API</h1>
-    <div class="setting-box mt-8">
-      <div class="setting-box-item">
-        <div style="padding: 8px 0; width: 100%">
-          <h4>API URL</h4>
-          <input
-            type="text"
-            name="API URL"
-            id="url-input"
-            class="tag-input"
-            placeholder="API URL"
-            style="margin-top: 0.8rem"
-          />
-          <div class="error-message" id="error-message">
-            Please enter a valid URL.
+      </section>
+      <!-- Audio Downloads Section  -->
+      <section class="setting-section hide-content" id="audio-download">
+        <div class="setting-wrapper">
+          <h1>Audio Download</h1>
+          <div class="setting-box mt-8">
+            <div class="setting-box-item" style="flex-direction: column">
+              <div class="setting-box-item-text">
+                <h4>Preferred Audio Formats for Downloads</h4>
+                <p class="desc">
+                  Specify your preferred audio file formats for downloads.
+                  Your selected formats will be prioritized during the
+                  download process.
+                </p>
+              </div>
+              <div class="checkboxs">
+                <label class="checkbox checkbox-label checked">
+                  <input type="checkbox" name="mp3" id="mp3" checked disabled />
+                  MP3
+                </label>
+                <label class="checkbox checkbox-label">
+                  <input type="checkbox" name="WAV" id="WAV" />
+                  WAV
+                </label>
+                <label class="checkbox checkbox-label">
+                  <input type="checkbox" name="AAC" id="AAC" />
+                  AAC
+                </label>
+                <label class="checkbox checkbox-label">
+                  <input type="checkbox" name="FLAC" id="FLAC" />
+                  FLAC
+                </label>
+                <label class="checkbox checkbox-label">
+                  <input type="checkbox" name="ALAC" id="ALAC" />
+                  ALAC
+                </label>
+                <label class="checkbox checkbox-label">
+                  <input type="checkbox" name="OGG" id="OGG" />
+                  OGG
+                </label>
+                <label class="checkbox checkbox-label">
+                  <input type="checkbox" name="WMA" id="WMA" />
+                  WMA
+                </label>
+                <label class="checkbox checkbox-label">
+                  <input type="checkbox" name="AIFF" id="AIFF" />
+                  AIFF
+                </label>
+                <label class="checkbox checkbox-label">
+                  <input type="checkbox" name="M4A" id="M4A" />
+                  M4A
+                </label>
+                <label class="checkbox checkbox-label">
+                  <input type="checkbox" name="Opus" id="Opus" />
+                  Opus
+                </label>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="setting-box mt-8">
-      <div class="setting-box-item">
-        <div style="padding: 8px 0; width: 100%">
-          <h4>Auth</h4>
-          <input
-            type="text"
-            name="Auth"
-            id="Auth"
-            class="tag-input"
-            placeholder="Auth"
-            style="margin-top: 0.8rem"
-          />
+      </section>
+      <!-- File Naming Setting  -->
+      <section class="setting-section hide-content" id="file-name">
+        <div class="setting-wrapper">
+          <h1>File Naming Settings</h1>
+          <div class="setting-box mt-8">
+            <div class="setting-box-item">
+              <div style="padding: 8px 0; width: 100%">
+                <h4>File Naming Settings</h4>
+                <div class="tag-container">
+                  <div class="tag-input-wrapper">
+                    <div id="tags-container" class="tag-input"></div>
+                  </div>
+                  <div class="tag-options">
+                    <button class="tag-btn" onclick="addTag('Filename')" disabled>
+                      Filename
+                    </button>
+                    <button class="tag-btn" onclick="addTag('Source Website')">
+                      Source Website
+                    </button>
+                    <button class="tag-btn" onclick="addTag('Quality')">
+                      Quality
+                    </button>
+                    <button class="tag-btn" onclick="addTag('Date')">
+                      Date
+                    </button>
+                    <button class="tag-btn" onclick="addTag('Time')">
+                      Time
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="setting-box mt-8">
+            <div class="setting-box-item select-box-item">
+              <div class="setting-box-item-text">
+                <h4>File Naming Strategy</h4>
+                <p class="desc">
+                  Set the default naming convention for downloaded or saved
+                  files with various customizable options
+                </p>
+              </div>
+              <div class="wrapper-dropdown" id="dropdown">
+                <span class="selected-display" id="destination">Use Original Name</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="arrow" id="drp-arrow"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-chevron-down h-4 w-4">
+                  <path d="m6 9 6 6 6-6"></path>
+                </svg>
+
+                <ul class="dropdown">
+                  <li class="item">Use Original Name</li>
+                  <li class="item">Custom Prefix/Suffix</li>
+                  <li class="item">Pattern-Based Naming</li>
+                  <li class="item">Use Page Title for Name</li>
+                  <li class="item">File Header Request for Name</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="setting-box mt-8">
+            <div class="setting-box-item" style="flex-direction: column; align-items: start">
+              <div class="setting-box-item-text">
+                <h4>File Name Conflicts</h4>
+                <p class="desc">
+                  Resolves conflicts when files with the same name are
+                  downloaded or saved, ensuring that existing files are not
+                  overwritten.
+                </p>
+              </div>
+              <div class="radio-btn">
+                <div class="radio-wrapper">
+                  <div class="radio-group radio-gap-xl">
+                    <label class="radio-button checkbox checkbox-label">
+                      <input type="radio" name="option" value="Ask Every Time" />
+                      <div class="radio-circle"></div>
+                      <span class="radio-label label">Ask Every Time</span>
+                    </label>
+                    <label class="radio-button checkbox checkbox-label">
+                      <input type="radio" name="option" value="Auto-Rename" />
+                      <div class="radio-circle"></div>
+                      <span class="radio-label label">Auto-Rename</span>
+                    </label>
+                    <label class="radio-button checkbox checkbox-label">
+                      <input type="radio" name="option" value="Overwrite Existing" />
+                      <div class="radio-circle"></div>
+                      <span class="radio-label label">Overwrite Existing</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="setting-box mt-8">
+            <div class="setting-box-item">
+              <div class="setting-box-item-text">
+                <h4>Remove Special Characters</h4>
+                <p class="desc">
+                  Automatically removes unsupported special characters from
+                  file names, such as \ / : * ? " <> |, to ensure
+                    compatibility and prevent errors during saving or
+                    downloading.
+                </p>
+              </div>
+              <div class="btn">
+                <label class="switch">
+                  <input type="checkbox" data-target="input1" onchange="toggleInput(this)" />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+            <div class="box-input" id="input1">
+              <input type="text" placeholder="Replace with (e.g., '-')" />
+            </div>
+          </div>
+          <div class="setting-box mt-8">
+            <div class="setting-box-item">
+              <div class="setting-box-item-text">
+                <h4>File Name Character Limit</h4>
+                <p class="desc">
+                  Sets a maximum character limit for file names to ensure
+                  compatibility across different systems and prevent errors
+                  during saving or downloading.
+                </p>
+              </div>
+              <div class="btn">
+                <label class="switch">
+                  <input type="checkbox" data-target="input2" onchange="toggleInput(this)" />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+            <div class="box-input" id="input2">
+              <input type="text" placeholder="Set Character Limit" />
+            </div>
+          </div>
+          <div class="setting-box mt-8">
+            <div class="setting-box-item">
+              <div class="setting-box-item-text">
+                <h4>File Name Case Management</h4>
+                <p class="desc">
+                  Defines whether file names should be automatically converted
+                  to uppercase, lowercase, or retain their original case
+                  during saving or downloading.
+                </p>
+              </div>
+              <div class="btn">
+                <label class="switch">
+                  <input type="checkbox" data-target="input3" onchange="toggleInput(this)" />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+            <div class="box-input" id="input3">
+              <div class="radio-btn">
+                <div class="radio-wrapper">
+                  <div class="radio-group radio-gap-xl">
+                    <label class="radio-button checkbox checkbox-label">
+                      <input type="radio" name="option" value="Original Case" />
+                      <div class="radio-circle"></div>
+                      <span class="radio-label label">Original Case</span>
+                    </label>
+                    <label class="radio-button checkbox checkbox-label">
+                      <input type="radio" name="option" value="Convert to Lowercase" />
+                      <div class="radio-circle"></div>
+                      <span class="radio-label label">Convert to Lowercase</span>
+                    </label>
+                    <label class="radio-button checkbox checkbox-label">
+                      <input type="radio" name="option" value="Convert to Uppercase" />
+                      <div class="radio-circle"></div>
+                      <span class="radio-label label">Convert to Uppercase</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+      <!-- Custom Code  -->
+      <section class="setting-section hide-content" id="custom-code">
+        <div class="setting-wrapper">
+          <h1>Custom Code</h1>
+          <div class="setting-box mt-8">
+            <div class="setting-box-item">
+
+              <div style="padding: 8px 0; width: 100%">
+                <div>
+                  <h4>Custom Content Script</h4>
+                  <div id="scripts"></div>
+                </div>
+                <button id="add-new" class="add-new">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                    class="tabler-icon tabler-icon-plus ">
+                    <path d="M12 5l0 14"></path>
+                    <path d="M5 12l14 0"></path>
+                  </svg>
+                  Add New</button>
+
+              </div>
+            </div>
+          </div>
+          <div class="setting-box mt-8">
+            <div class="setting-box-item">
+              <div style="padding: 8px 0; width: 100%">
+                <h4>Background Script</h4>
+
+                <input type="text" name="Background Script" id="Background Script" class="tag-input"
+                  placeholder="Background Script" style="margin-top: 0.8rem" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Custom API -->
+      <section class="setting-section hide-content" id="custom-api">
+        <div class="setting-wrapper">
+          <h1>Custom API</h1>
+          <div class="setting-box mt-8">
+            <div class="setting-box-item">
+              <div style="padding: 8px 0; width: 100%">
+                <h4>API URL</h4>
+                <input type="text" name="API URL" id="url-input" class="tag-input" placeholder="API URL"
+                  style="margin-top: 0.8rem" />
+                <div class="error-message" id="error-message">
+                  Please enter a valid URL.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="setting-box mt-8">
+            <div class="setting-box-item">
+              <div style="padding: 8px 0; width: 100%">
+                <h4>Auth</h4>
+                <input type="text" name="Auth" id="Auth" class="tag-input" placeholder="Auth"
+                  style="margin-top: 0.8rem" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   </div>
-</section>
-</main>
-</div>
-    <!-- Toast  -->
-    <div class="toasts-wrapper">
-      <div class="toast-container" id="toast-container"></div>
-    </div>
-    <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/editor.js"></script>
-    <script src="./assets/js/urlValidate.js"></script>
-    <script src="./assets/js/modal.js"></script>
-    <script src="./assets/js/btnLoading.js"></script>
-  </body>
+  <!-- Toast  -->
+  <div class="toasts-wrapper">
+    <div class="toast-container" id="toast-container"></div>
+  </div>
+  <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/editor.js"></script>
+  <script src="./assets/js/urlValidate.js"></script>
+  <script src="./assets/js/modal.js"></script>
+  <script src="./assets/js/btnLoading.js"></script>
+</body>
+
 </html>
