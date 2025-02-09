@@ -450,10 +450,12 @@
   border: 1px solid var(--input-border);
   border-radius: calc(0.5rem - 2px);
   align-items: center;
+  flex-wrap: wrap;
   width: 100%;
-  height: 52px;
+  min-height: 52px;
   display: flex;
   outline: none;
+  gap: 8px;
 }
 .tag-options {
   display: flex;
@@ -550,6 +552,11 @@ button:disabled {
   .setting-box-item {
     flex-direction: column;
     align-items: start;
+  }
+  .setting-wrapper {
+
+    padding: 0.5rem;
+  
   }
   .btn {
     margin-left: 0 !important;
