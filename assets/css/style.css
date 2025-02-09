@@ -223,7 +223,7 @@
 .input-wrapper2 {
   transition: 0.3s ease-in-out;
   padding-right: 0.5rem;
-  border: 1px solid var(--hover-color);
+  border: 2px solid var(--hover-color);
   border-radius: calc(0.5rem - 2px);
   align-items: center;
   min-width: 585px;
@@ -239,9 +239,6 @@
     text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 0.15s;
-  --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-    var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-shadow);
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   padding-left: 0.75rem;
@@ -622,6 +619,13 @@ textarea::selection {
   margin-top: 10px;
   display: none;
 }
+.active-script-container{
+  background-color: #fff6b95e;
+  border-radius: 8px;
+  padding: 6px 16px;
+margin-top: 14px;
+}
+
 .add-new,.save-setting-btn{
   background-color: var(--dark);
   min-width: 80px;
@@ -639,6 +643,8 @@ textarea::selection {
   font-weight: 500;
   transition: 0.3s ease-in-out;
   margin-top: 16px;
+  margin-left: 16px;
+  margin-bottom: 12px;
 }
 .add-new:hover{
   background-color: var(--dark);
@@ -664,7 +670,17 @@ display: none;
   margin-top: 16px;
 }
 .script-edit-bar.active-script {
-  background-color: var(--secondary-color);
+  background-color: #fff6b9;
+  h3{
+    color: black;
+  }
+  .action-btn:hover{
+    background-color: #ccc;
+  }
+  .action-btn svg {
+    fill: black;
+  }
+  
 
 }
 .script-edit-bar h3{
@@ -681,14 +697,14 @@ display: none;
 .script-bar-actions .slider{
   background-color: red;
   &::before{
-    background-color: #ccc;
+    background-color: #fff;
   }
   
 }
 .script-bar-actions input:checked + .slider {
   background-color: #05C896;
   &::before{
-    background-color: #ccc;
+    background-color: #fff;
   }
 }
 .action-btn {
@@ -714,8 +730,4 @@ display: none;
 .script-setting-section{
   margin-top: 20px;
 margin-bottom: 24px;
-}
-.script-setting-section h4{
-  padding-left: 6px;
-  font-size: 18px;
 }

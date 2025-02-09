@@ -23,12 +23,14 @@ function addScript() {
   document.querySelectorAll(".script-container").forEach(script => {
     script.querySelector(".script-body").style.display = "none";
     script.querySelector(".script-edit-bar").classList.remove("active-script");
+    script.querySelector(".script-wrapper").classList.remove("active-script-container");
   });
 
   const scriptDiv = document.createElement("div");
   scriptDiv.classList.add("script-container");
 
   scriptDiv.innerHTML = `
+    <div class = 'active-script-container script-wrapper'>
     <div class="script-edit-bar active-script">
       <h3 id = "script-title">New Script ${count}</h3>
       <div class="script-bar-actions">
@@ -68,10 +70,9 @@ function addScript() {
         <div class="line-numbers" id="line-numbers">
           <span>1</span><br />
         </div>
-        <textarea id="code-input" spellcheck="false"></textarea>
+        <textarea id="code-input" spellcheck="false" placeholder = "New Script 1"></textarea>
       </div>
       <div class = "script-setting-section">
-      <h4 >Settings</h4>
         <div class="select-wrapper">
         <div class="wrapper-dropdown select-dropdown" id="dropdown">
           <span class="selected-display" id="destination">Inject After Page Load</span>
@@ -86,6 +87,7 @@ function addScript() {
     <button class = "save-setting-btn">Save Settings</button>
       </div>
     </div>
+    </div>
   `;
   
   scriptsContainer.appendChild(scriptDiv);
@@ -94,6 +96,7 @@ function addScript() {
   const editBtn = scriptDiv.querySelector(".edit-btn");
   const scriptBody = scriptDiv.querySelector(".script-body");
   const editBar = scriptDiv.querySelector(".script-edit-bar");
+  const scriptWrapper = scriptDiv.querySelector(".script-wrapper");
   const scriptInput = scriptDiv.querySelector("#script-input");
   const scriptTitle = scriptDiv.querySelector("#script-title");
   const savebtn = scriptDiv.querySelector(".save-setting-btn");
@@ -110,11 +113,13 @@ function addScript() {
     document.querySelectorAll(".script-container").forEach(script => {
       script.querySelector(".script-body").style.display = "none";
       script.querySelector(".script-edit-bar").classList.remove("active-script");
+      script.querySelector(".script-wrapper").classList.remove("active-script-container");
     });
 
     scriptBody.style.display = isOpen ? "none" : "block";
     if (!isOpen) {
       editBar.classList.add("active-script");
+      scriptWrapper.classList.add("active-script-container");
     }
   });
   savebtn.addEventListener('click',()=>{
