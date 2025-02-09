@@ -21,6 +21,7 @@
   --info-text-color: #1d4ed8;
   --warn-text-color: #a16207;
   --icon-hover: #ccc;
+  --script-container-background: #fff6b95e;
 }
 .dark {
   --disabled-color: #5d5c5c;
@@ -45,4 +46,5 @@
   --info-text-color: #bfd8fe;
   --warn-text-color: #fef08a;
   --icon-hover: hsl(240 3.7% 15.9%);
+  --script-container-background: #fff6b95e;
 }

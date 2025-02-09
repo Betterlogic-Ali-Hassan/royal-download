@@ -620,9 +620,10 @@ textarea::selection {
   display: none;
 }
 .active-script-container{
-  background-color: #fff6b95e;
+  background-color: var(--script-container-background);
   border-radius: 8px;
-  padding: 6px 16px;
+  border: 3px dotted var(--input-border);
+  padding: 0 8px;
 margin-top: 14px;
 }
 
