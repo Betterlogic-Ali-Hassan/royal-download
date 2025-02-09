@@ -83,7 +83,7 @@ function addScript() {
             <li class="item">Inject After Page Load</li>
           </ul>
         </div>
-        <button class = "save-setting-btn">Save Settings</button>
+    
       </div>
     </div>
   `;
@@ -96,7 +96,7 @@ function addScript() {
   const editBar = scriptDiv.querySelector(".script-edit-bar");
   const scriptInput = scriptDiv.querySelector("#script-input");
   const scriptTitle = scriptDiv.querySelector("#script-title");
-  const savebtn = scriptDiv.querySelector(".save-setting-btn");
+  // const savebtn = scriptDiv.querySelector(".save-setting-btn");
 
 
   scriptInput.addEventListener("input", () => {
@@ -105,8 +105,8 @@ function addScript() {
   // Edit button functionality
   editBtn.addEventListener("click", () => {
     const isOpen = scriptBody.style.display === "block";
-    savebtn.style.display = "flex"
-    // Sabhi scripts close kar do
+    // savebtn.style.display = "flex"
+  
     document.querySelectorAll(".script-container").forEach(script => {
       script.querySelector(".script-body").style.display = "none";
       script.querySelector(".script-edit-bar").classList.remove("active-script");
@@ -117,20 +117,20 @@ function addScript() {
       editBar.classList.add("active-script");
     }
   });
-  savebtn.addEventListener('click',()=>{
-    const isOpen = scriptBody.style.display === "block";
-    // Sabhi scripts close kar do
-    document.querySelectorAll(".script-container").forEach(script => {
-      script.querySelector(".script-body").style.display = "none";
-      script.querySelector(".script-edit-bar").classList.remove("active-script");
-    });
+  // savebtn.addEventListener('click',()=>{
+  //   const isOpen = scriptBody.style.display === "block";
+  //   // Sabhi scripts close kar do
+  //   document.querySelectorAll(".script-container").forEach(script => {
+  //     script.querySelector(".script-body").style.display = "none";
+  //     script.querySelector(".script-edit-bar").classList.remove("active-script");
+  //   });
 
-    scriptBody.style.display = isOpen ? "none" : "block";
-    if (!isOpen) {
-      editBar.classList.add("active-script");
-    }
-    showToast("Setting Saved Successfully");
-  });
+  //   scriptBody.style.display = isOpen ? "none" : "block";
+  //   if (!isOpen) {
+  //     editBar.classList.add("active-script");
+  //   }
+  //   showToast("Setting Saved Successfully");
+  // });
 
 
   // Delete button functionality
