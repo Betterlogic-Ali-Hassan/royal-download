@@ -53,6 +53,7 @@ nav .list li .nav-link {
   padding: 0.75rem 1.5rem;
   align-items: center;
   display: flex;
+  color: var(--dark);
 }
 nav .list li .nav-link:hover {
   background-color: var(--hover-color);

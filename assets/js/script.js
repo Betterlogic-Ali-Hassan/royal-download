@@ -9,6 +9,7 @@ const items = document.querySelectorAll(".sidebar .nav-link");
 const contents = document.querySelectorAll(".main .setting-section");
 const addNewBtn = document.querySelector("#add-new");
 
+
 //Script Add Functions
 
 addNewBtn.addEventListener("click", addScript);
@@ -16,6 +17,7 @@ let count = 1;
 
 function addScript() {
   const scriptsContainer = document.getElementById("scripts");
+
 
   // Sab scripts ko close kar do
   document.querySelectorAll(".script-container").forEach(script => {
@@ -28,7 +30,7 @@ function addScript() {
 
   scriptDiv.innerHTML = `
     <div class="script-edit-bar active-script">
-      <h3>New Script ${count}</h3>
+      <h3 id = "script-title">New Script ${count}</h3>
       <div class="script-bar-actions">
         <label class="switch">
           <input type="checkbox" />
@@ -47,7 +49,7 @@ function addScript() {
       </div>
     </div>
     <div class="script-body" style="display: block;">
-      <input type="text" value="New script ${count}" class="tag-input" style="margin-top: 0.8rem" />
+      <input type="text" value="New script ${count}" class="tag-input" id = 'script-input' style="margin-top: 0.8rem" />
       <div class="select-wrapper">
         <input type="text" name="url" id="url" class="tag-input" placeholder="https://example.com" />
         <div class="wrapper-dropdown select-dropdown" id="dropdown">
@@ -61,11 +63,27 @@ function addScript() {
           </ul>
         </div>
       </div>
+      
       <div class="code-editor">
         <div class="line-numbers" id="line-numbers">
           <span>1</span><br />
         </div>
         <textarea id="code-input" spellcheck="false"></textarea>
+      </div>
+      <div class = "script-setting-section">
+      <h4 >Settings</h4>
+        <div class="select-wrapper">
+        <div class="wrapper-dropdown select-dropdown" id="dropdown">
+          <span class="selected-display" id="destination">Inject After Page Load</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="arrow" id="drp-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"></path>
+          </svg>
+          <ul class="dropdown">
+            <li class="item">Inject Before Page Load</li>
+            <li class="item">Inject After Page Load</li>
+          </ul>
+        </div>
+        <button class = "save-setting-btn">Save Settings</button>
       </div>
     </div>
   `;
@@ -76,11 +94,31 @@ function addScript() {
   const editBtn = scriptDiv.querySelector(".edit-btn");
   const scriptBody = scriptDiv.querySelector(".script-body");
   const editBar = scriptDiv.querySelector(".script-edit-bar");
+  const scriptInput = scriptDiv.querySelector("#script-input");
+  const scriptTitle = scriptDiv.querySelector("#script-title");
+  const savebtn = scriptDiv.querySelector(".save-setting-btn");
 
+
+  scriptInput.addEventListener("input", () => {
+    scriptTitle.textContent = scriptInput.value;
+  });
   // Edit button functionality
   editBtn.addEventListener("click", () => {
     const isOpen = scriptBody.style.display === "block";
+    savebtn.style.display = "flex"
+    // Sabhi scripts close kar do
+    document.querySelectorAll(".script-container").forEach(script => {
+      script.querySelector(".script-body").style.display = "none";
+      script.querySelector(".script-edit-bar").classList.remove("active-script");
+    });
 
+    scriptBody.style.display = isOpen ? "none" : "block";
+    if (!isOpen) {
+      editBar.classList.add("active-script");
+    }
+  });
+  savebtn.addEventListener('click',()=>{
+    const isOpen = scriptBody.style.display === "block";
     // Sabhi scripts close kar do
     document.querySelectorAll(".script-container").forEach(script => {
       script.querySelector(".script-body").style.display = "none";
@@ -93,6 +131,7 @@ function addScript() {
     }
     showToast("Setting Saved Successfully");
   });
+
 
   // Delete button functionality
   scriptDiv.querySelector(".delete-btn").addEventListener("click", () => {

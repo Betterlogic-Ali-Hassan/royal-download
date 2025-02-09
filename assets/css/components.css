@@ -163,3 +163,7 @@ input:checked + .slider:before {
   position: relative;
   opacity: 1;
 }
+input[type="text"], input[type = "number"] {
+  background-color: transparent;
+  color: var(--dark);
+}

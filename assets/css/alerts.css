@@ -42,7 +42,7 @@
   border-radius: 50%;
 }
 .cross-icon:hover {
-  background-color: #dadada;
+  background-color: var(--border-color);
 }
 .success-alert {
   color: var(--success-text-color);
