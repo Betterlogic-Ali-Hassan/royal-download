@@ -663,7 +663,6 @@ margin-top: 14px;
   border-radius: 4px;
   height: 52px;
   margin: 0;
-display: none;
 }
 .save-setting-btn:hover{
   background-color: var(--hover-color);
