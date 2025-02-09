@@ -128,6 +128,7 @@ function addScript() {
     document.querySelectorAll(".script-container").forEach(script => {
       script.querySelector(".script-body").style.display = "none";
       script.querySelector(".script-edit-bar").classList.remove("active-script");
+      script.querySelector(".script-wrapper").classList.remove("active-script-container");
     });
 
     scriptBody.style.display = isOpen ? "none" : "block";
