@@ -223,7 +223,7 @@
 .input-wrapper2 {
   transition: 0.3s ease-in-out;
   padding-right: 0.5rem;
-  border: 2px solid var(--hover-color);
+  border: 1.5px solid var(--input-border);
   border-radius: calc(0.5rem - 2px);
   align-items: center;
   min-width: 585px;
