@@ -554,9 +554,7 @@ button:disabled {
     align-items: start;
   }
   .setting-wrapper {
-
     padding: 0.5rem;
-  
   }
   .btn {
     margin-left: 0 !important;
@@ -626,15 +624,16 @@ textarea::selection {
   margin-top: 10px;
   display: none;
 }
-.active-script-container{
+.active-script-container {
   background-color: var(--script-container-background);
   border-radius: 8px;
   border: 3px dotted var(--input-border);
   padding: 0 8px;
-margin-top: 14px;
+  margin-top: 14px;
 }
 
-.add-new,.save-setting-btn{
+.add-new,
+.save-setting-btn {
   background-color: var(--dark);
   min-width: 80px;
   color: var(--card-bg);
@@ -642,7 +641,7 @@ margin-top: 14px;
   align-items: center;
   gap: 6px;
   justify-content: center;
-  min-height:42px;
+  min-height: 42px;
   padding: 0 24px;
   border-radius: 24px;
   border: 2px solid transparent;
@@ -654,20 +653,20 @@ margin-top: 14px;
   margin-left: 16px;
   margin-bottom: 12px;
 }
-.add-new:hover{
+.add-new:hover {
   background-color: var(--dark);
 }
-.save-setting-btn{
+.save-setting-btn {
   background-color: var(--secondary-color);
   color: var(--dark);
   border-radius: 4px;
   height: 52px;
   margin: 0;
 }
-.save-setting-btn:hover{
+.save-setting-btn:hover {
   background-color: var(--hover-color);
 }
-.script-edit-bar{
+.script-edit-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -678,19 +677,17 @@ margin-top: 14px;
 }
 .script-edit-bar.active-script {
   background-color: #fff6b9;
-  h3{
+  h3 {
     color: black;
   }
-  .action-btn:hover{
+  .action-btn:hover {
     background-color: #ccc;
   }
   .action-btn svg {
     fill: black;
   }
-  
-
 }
-.script-edit-bar h3{
+.script-edit-bar h3 {
   color: var(--dark);
   margin: 0;
   font-size: 14px;
@@ -701,16 +698,15 @@ margin-top: 14px;
   align-items: center;
   gap: 12px;
 }
-.script-bar-actions .slider{
+.script-bar-actions .slider {
   background-color: red;
-  &::before{
+  &::before {
     background-color: #fff;
   }
-  
 }
 .script-bar-actions input:checked + .slider {
-  background-color: #05C896;
-  &::before{
+  background-color: #05c896;
+  &::before {
     background-color: #fff;
   }
 }
@@ -727,14 +723,15 @@ margin-top: 14px;
   align-items: center;
   justify-content: center;
   transition: 0.3 ease-in-out;
-  svg{
+
+  svg {
     fill: var(--dark);
   }
 }
-.action-btn:hover{
+.action-btn:hover {
   background-color: var(--icon-hover);
 }
-.script-setting-section{
+.script-setting-section {
   margin-top: 20px;
-margin-bottom: 24px;
+  margin-bottom: 24px;
 }

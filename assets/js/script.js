@@ -9,7 +9,6 @@ const items = document.querySelectorAll(".sidebar .nav-link");
 const contents = document.querySelectorAll(".main .setting-section");
 const addNewBtn = document.querySelector("#add-new");
 
-
 //Script Add Functions
 
 addNewBtn.addEventListener("click", addScript);
@@ -18,12 +17,15 @@ let count = 1;
 function addScript() {
   const scriptsContainer = document.getElementById("scripts");
 
-
   // Sab scripts ko close kar do
-  document.querySelectorAll(".script-container").forEach(script => {
-    script.querySelector(".script-body").style.display = "none";
+  document.querySelectorAll(".script-container").forEach((script) => {
+    script.querySelector(".script-body").style.maxHeight = 0;
+    script.querySelector(".script-body").style.opacity = 0;
+    script.querySelector(".script-body").style.pointerEvents = "none";
     script.querySelector(".script-edit-bar").classList.remove("active-script");
-    script.querySelector(".script-wrapper").classList.remove("active-script-container");
+    script
+      .querySelector(".script-wrapper")
+      .classList.remove("active-script-container");
   });
 
   const scriptDiv = document.createElement("div");
@@ -52,7 +54,7 @@ function addScript() {
         </button>
       </div>
     </div>
-    <div class="script-body" style="max-height: '1000px'; overflow: hidden; transition: max-height 0.5s ease-out; ">
+    <div class="script-body" style="max-height: '1000px'; pointer-events: all; opacity: 1; transition: all 0.5s ease-out; ">
       <input type="text" value="New script ${count}" class="tag-input" id = 'script-input' style="margin-top: 0.8rem" />
       <div class="select-wrapper">
         <input type="text" name="url" id="url" class="tag-input" placeholder="https://example.com" />
@@ -91,7 +93,7 @@ function addScript() {
     </div>
     </div>
   `;
-  
+
   scriptsContainer.appendChild(scriptDiv);
   setTimeout(() => {
     scriptDiv.style.opacity = "1";
@@ -107,33 +109,46 @@ function addScript() {
   const scriptTitle = scriptDiv.querySelector("#script-title");
   const savebtn = scriptDiv.querySelector(".save-setting-btn");
 
-
   scriptInput.addEventListener("input", () => {
     scriptTitle.textContent = scriptInput.value;
   });
   // Edit button functionality
   editBtn.addEventListener("click", () => {
     const isOpen = scriptBody.style.maxHeight !== "0px";
-  
-    document.querySelectorAll(".script-container").forEach(script => {
-      scriptBody.style.maxHeight = "0"; 
-      script.querySelector(".script-edit-bar").classList.remove("active-script");
-      script.querySelector(".script-wrapper").classList.remove("active-script-container");
+
+    document.querySelectorAll(".script-container").forEach((script) => {
+      script.querySelector(".script-body").style.maxHeight = "0";
+      script.querySelector(".script-body").style.opacity = 0;
+      script.querySelector(".script-body").style.pointerEvents = "none";
+      script
+        .querySelector(".script-edit-bar")
+        .classList.remove("active-script");
+      script
+        .querySelector(".script-wrapper")
+        .classList.remove("active-script-container");
     });
 
-    scriptBody.style.maxHeight = isOpen ? "0" : "1000px"; 
     if (!isOpen) {
+      scriptBody.style.maxHeight = "1000px";
+      scriptBody.style.opacity = 1;
+      scriptBody.style.pointerEvents = "all";
       editBar.classList.add("active-script");
       scriptWrapper.classList.add("active-script-container");
     }
   });
-  savebtn.addEventListener('click',()=>{
+  savebtn.addEventListener("click", () => {
     const isOpen = scriptBody.style.maxHeight !== "0px";
     // Sabhi scripts close kar do
-    document.querySelectorAll(".script-container").forEach(script => {
-      scriptBody.style.maxHeight = "0"; 
-      script.querySelector(".script-edit-bar").classList.remove("active-script");
-      script.querySelector(".script-wrapper").classList.remove("active-script-container");
+    document.querySelectorAll(".script-container").forEach((script) => {
+      scriptBody.style.maxHeight = "0";
+      scriptBody.style.opacity = 0;
+      scriptBody.style.pointerEvents = "none";
+      script
+        .querySelector(".script-edit-bar")
+        .classList.remove("active-script");
+      script
+        .querySelector(".script-wrapper")
+        .classList.remove("active-script-container");
     });
 
     scriptBody.style.display = isOpen ? "0" : "1000px";
@@ -143,10 +158,11 @@ function addScript() {
     showToast("Setting Saved Successfully");
   });
 
-
   // Delete button functionality
   scriptDiv.querySelector(".delete-btn").addEventListener("click", () => {
-    const confirmDelete = confirm("Are you sure you want to delete this Script?");
+    const confirmDelete = confirm(
+      "Are you sure you want to delete this Script?"
+    );
     if (confirmDelete) {
       scriptDiv.style.opacity = "0";
       scriptDiv.style.transform = "translateY(-10px)";
@@ -159,7 +175,6 @@ function addScript() {
   });
   showToast("Setting Saved Successfully");
 }
-
 
 // Conditional Rendering
 
@@ -280,7 +295,6 @@ function handleDropdown(dropdown, arrow, open) {
     dropdown.classList.remove("active");
   }
 }
-
 
 // Add the first tag by default
 function initializeDefaultTag(tagName) {
@@ -487,4 +501,3 @@ checkboxes.forEach((checkbox) => {
 
 initializeDefaultTag("Filename");
 switchBoxToggle();
-
